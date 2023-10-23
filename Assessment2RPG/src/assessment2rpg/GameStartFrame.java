@@ -4,6 +4,9 @@
  */
 package assessment2rpg;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sahil
@@ -36,19 +39,19 @@ public class GameStartFrame extends javax.swing.JFrame {
         Warrior = new javax.swing.JRadioButton();
         Mage = new javax.swing.JRadioButton();
         Monk = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         playerName = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        relicImage = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea_RelicDescription = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        FlameBlade = new javax.swing.JRadioButton();
+        LightningBracer = new javax.swing.JRadioButton();
+        HolyStone = new javax.swing.JRadioButton();
         confirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,72 +128,18 @@ public class GameStartFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Monk)
                         .addGap(30, 30, 30)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-        );
-
-        jLabel5.setText("jLabel5");
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
-
-        jLabel3.setText("Relics");
-
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setText("jRadioButton4");
-
-        buttonGroup2.add(jRadioButton5);
-        jRadioButton5.setText("jRadioButton5");
-
-        buttonGroup2.add(jRadioButton6);
-        jRadioButton6.setText("jRadioButton6");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jRadioButton4)
-                                .addComponent(jRadioButton5)
-                                .addComponent(jRadioButton6))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel3)))
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton6)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(307, 307, 307))
         );
 
         jLabel1.setText("Welcome to the Character Selector Please enter your name!");
 
-        playerName.setText("jTextField1");
+        playerName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playerNameActionPerformed(evt);
+            }
+        });
         playerName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 playerNameKeyTyped(evt);
@@ -228,10 +177,43 @@ public class GameStartFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(playerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(22, 22, 22))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/flame blade.jpg"))); // NOI18N
+        relicImage.setText("jLabel5");
+
+        jTextArea_RelicDescription.setColumns(20);
+        jTextArea_RelicDescription.setRows(2);
+        jScrollPane4.setViewportView(jTextArea_RelicDescription);
+
+        jLabel3.setText("Relics");
+
+        buttonGroup2.add(FlameBlade);
+        FlameBlade.setText("Flame Blade");
+        FlameBlade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FlameBladeActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(LightningBracer);
+        LightningBracer.setText("Lightning  Bracer");
+        LightningBracer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LightningBracerActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(HolyStone);
+        HolyStone.setText("Holy Stone");
+        HolyStone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HolyStoneActionPerformed(evt);
+            }
+        });
 
         confirmButton.setText("Confirm Choices");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -240,26 +222,71 @@ public class GameStartFrame extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LightningBracer)
+                                    .addComponent(FlameBlade)
+                                    .addComponent(HolyStone)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel3)))
+                        .addGap(123, 123, 123)
+                        .addComponent(relicImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(356, 356, 356)
+                .addComponent(confirmButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FlameBlade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LightningBracer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HolyStone)
+                        .addGap(36, 36, 36))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(relicImage, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(confirmButton)
+                .addGap(21, 21, 21))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(357, 357, 357)
-                        .addComponent(confirmButton)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,12 +294,10 @@ public class GameStartFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(confirmButton)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         pack();
@@ -285,10 +310,10 @@ public class GameStartFrame extends javax.swing.JFrame {
         jTextArea_ClassDescription.setText("Ah so you are a warrior!\n"
                             + "You rely on your strong attacks and high defence to reduce damage.\n"
                             + "You can use your skills to counter attack and deliver a large number of blows\n"
-                            + "And your special abilities are 'Cross Slash', 'Swift Counter', and 'Blade Dance'.\n"
-                            + "Cross Slash - Perform a heavy blow against your enemy. Deals 10*2 Base Damage. Mana Cost: 10\n"
-                            + "Swift Counter - Get into a counter stance and parry attacks for the rest of the turn. Deals damage taken this turn. Mana Cost: 15\n" 
-                            + "Blade Dance - Charge up for this turn and next, and perform a deadly flurry of attacks on the third turn.\nDeals 8*5 Base Damage. Mana Cost: 20");
+                            + "And your special abilities are 'Cross Slash', 'Swift Counter', and 'Blade Dance'.\n\n"
+                            + "Cross Slash - Perform a heavy blow against your enemy. Deals 10*2 Base Damage. Mana Cost: 10\n\n"
+                            + "Swift Counter - Get into a counter stance and parry attacks for the rest of the turn. Deals damage taken this turn. Mana Cost: 15\n\n" 
+                            + "Blade Dance - Charge up for this turn and next, and perform a deadly flurry of attacks on the third turn. Deals 8*5 Base Damage. Mana Cost: 20");
         
         
     }//GEN-LAST:event_WarriorActionPerformed
@@ -297,22 +322,79 @@ public class GameStartFrame extends javax.swing.JFrame {
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Mage.jpg")));
         classImage.setText("Mage");
         charCreatorClass = "mage";
+        jTextArea_ClassDescription.setText("Ah very impressive, you are a mage!\n"
+                            + "You use your high mana to cast elemental spells and inflict debuffs.\n"
+                            + "You can cast your Mage Armour to reduce damage.\n"
+                            + "And your special abilities are 'Fire Bolts', 'Mage Armour', and 'Lightning Storm'.\n\n"
+                            + "Fire Bolt - Shoot up to 5 magical flame bolts at your enemy each costing 8 mana. Deals 7 Base Damage each and inflicts 2 stack of burn.\n        - [Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn. Mana Cost: 8\n\n"
+                            + "Mage Armour - Summon a set of magical armour around yourself damaging foes that attack you.\nGain 4 defense this round and deal 4 damage to enemies that hit you. Mana Cost: 10\n\n" 
+                            + "Lightning Storm - Charge a lightning storm for this turn and next. Deals 15 Base Damage and inflicts 4 shock each turn.\n       - [Shock] - take 1 extra damage for each stack. Mana Cost: 40");
     }//GEN-LAST:event_MageActionPerformed
 
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.png")));
         classImage.setText("Monk");
         charCreatorClass = "monk";
+        jTextArea_ClassDescription.setText("I see, you are a monk!\n"
+                            + "You use your high agility to dodge attacks instead of block.\n"
+                            + "You can use your skills to heal yourself and attack multiple times a turn.\n"
+                            + "And your special abilities are 'Quivering Palm', 'Golden Soul', and 'Flurry of Blows'.\n\n"
+                            + "Quivering Palm - Strike your foe and cause them to take more damage for 2 turns. Deals 8 Base Damage, ignores Defence and inflicts 3 Vulnerable.\n       -[Vulnerable] - take 2x damage from attacks. Mana Cost: 15\n\n"
+                            + "Golden Soul - Harness the energy in your body to heal yourself of ailments. Lose all Status Effects and heal 30 health. Mana Cost: 15\n\n" 
+                            + "Flurry of Blows - Harness your inner energy to temporarily enhance your striking speed.\n Attack 3 times a turn for the next 2 turns and ignore defense. Mana Cost: 20");
     }//GEN-LAST:event_MonkActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        newPlayer = new RPGPlayer(playerName.getText(), charCreatorClass, charCreatorRelic);
-        System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charCreatorClass+" relic: "+charCreatorRelic);
+        if (!"".equals(playerName.getText()))
+        {
+            if (!"".equals(charCreatorClass) && !"".equals(charCreatorRelic))
+            {
+                newPlayer = new RPGPlayer(playerName.getText(), charCreatorClass, charCreatorRelic);
+                System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charCreatorClass+" relic: "+charCreatorRelic);
+            }
+            else
+            {
+                JFrame frame = new JFrame("Error Box");
+                JOptionPane.showMessageDialog(frame, "Select a Class and Relic.");
+            }
+        }
+        else
+        {
+            JFrame frame = new JFrame("Error Box");
+            JOptionPane.showMessageDialog(frame, "Enter a valid player name.");
+        }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void playerNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_playerNameKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_playerNameKeyTyped
+
+    private void LightningBracerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LightningBracerActionPerformed
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Lightning Bracer.jpg")));
+        relicImage.setText("LightningBracer");
+        charCreatorRelic = "lightning bracer";
+        jTextArea_RelicDescription.setText("Lightning Bracer - Deal 2-5 damage to enemies when they attack you with a 50% of shock.\n"
+                        + "[Shock] - take 1 extra damage for each stack and reduce stack by 1 at end of turn.");
+    }//GEN-LAST:event_LightningBracerActionPerformed
+
+    private void FlameBladeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameBladeActionPerformed
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Flame Blade.jpg")));
+        relicImage.setText("FlameBlade");
+        charCreatorRelic = "flame blade";
+        jTextArea_RelicDescription.setText("Flame Blade - Inflict 2 burn stacks on every hit. \n"
+                        + "[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
+    }//GEN-LAST:event_FlameBladeActionPerformed
+
+    private void HolyStoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolyStoneActionPerformed
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Holy Stone.jpg")));
+        relicImage.setText("HolyStone");
+        charCreatorRelic = "holy stone";
+        jTextArea_RelicDescription.setText("Holy Stone - Heal half the damage you deal at end of turn.");
+    }//GEN-LAST:event_HolyStoneActionPerformed
+
+    private void playerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playerNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +432,9 @@ public class GameStartFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton FlameBlade;
+    private javax.swing.JRadioButton HolyStone;
+    private javax.swing.JRadioButton LightningBracer;
     private javax.swing.JRadioButton Mage;
     private javax.swing.JRadioButton Monk;
     private javax.swing.JRadioButton Warrior;
@@ -361,23 +446,19 @@ public class GameStartFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea_ClassDescription;
+    private javax.swing.JTextArea jTextArea_RelicDescription;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField playerName;
+    private javax.swing.JLabel relicImage;
     // End of variables declaration//GEN-END:variables
-    public boolean charCreatorConfirmation=false;
-    public String charCreatorClass="warrior";
-    public String charCreatorRelic="flame blade";
+    public String charCreatorClass="";
+    public String charCreatorRelic="";
     public RPGPlayer newPlayer = null;
 
 }
