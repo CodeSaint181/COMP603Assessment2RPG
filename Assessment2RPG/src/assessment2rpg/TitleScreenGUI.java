@@ -133,11 +133,13 @@ public class TitleScreenGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_quitButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        GameStartFrame charCreator = new GameStartFrame();
-        charCreator.setVisible(true);
-        //GameStart game = new GameStart();
-        //game.startGame();
-        this.jLabel1.setVisible(false);
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GameStartFrame().setVisible(true);
+            }
+        });
+        this.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**
