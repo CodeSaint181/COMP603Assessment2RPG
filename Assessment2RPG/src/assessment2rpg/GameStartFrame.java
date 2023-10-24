@@ -326,9 +326,9 @@ public class GameStartFrame extends javax.swing.JFrame {
                             + "You use your high mana to cast elemental spells and inflict debuffs.\n"
                             + "You can cast your Mage Armour to reduce damage.\n"
                             + "And your special abilities are 'Fire Bolts', 'Mage Armour', and 'Lightning Storm'.\n\n"
-                            + "Fire Bolt - Shoot up to 5 magical flame bolts at your enemy each costing 8 mana. Deals 7 Base Damage each and inflicts 2 stack of burn.\n        - [Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn. Mana Cost: 8\n\n"
+                            + "Fire Bolt - Shoot up to 5 magical flame bolts at your enemy each costing 8 mana. Deals 7 Base Damage each and inflicts 2 stack of burn.\n- [Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn. Mana Cost: 8\n\n"
                             + "Mage Armour - Summon a set of magical armour around yourself damaging foes that attack you.\nGain 4 defense this round and deal 4 damage to enemies that hit you. Mana Cost: 10\n\n" 
-                            + "Lightning Storm - Charge a lightning storm for this turn and next. Deals 15 Base Damage and inflicts 4 shock each turn.\n       - [Shock] - take 1 extra damage for each stack. Mana Cost: 40");
+                            + "Lightning Storm - Charge a lightning storm for this turn and next. Deals 15 Base Damage and inflicts 4 shock each turn.\n- [Shock] - take 1 extra damage for each stack. Mana Cost: 40");
     }//GEN-LAST:event_MageActionPerformed
 
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
@@ -339,7 +339,7 @@ public class GameStartFrame extends javax.swing.JFrame {
                             + "You use your high agility to dodge attacks instead of block.\n"
                             + "You can use your skills to heal yourself and attack multiple times a turn.\n"
                             + "And your special abilities are 'Quivering Palm', 'Golden Soul', and 'Flurry of Blows'.\n\n"
-                            + "Quivering Palm - Strike your foe and cause them to take more damage for 2 turns. Deals 8 Base Damage, ignores Defence and inflicts 3 Vulnerable.\n       -[Vulnerable] - take 2x damage from attacks. Mana Cost: 15\n\n"
+                            + "Quivering Palm - Strike your foe and cause them to take more damage for 2 turns. Deals 8 Base Damage, ignores Defence and inflicts 3 Vulnerable.\n-[Vulnerable] - take 2x damage from attacks. Mana Cost: 15\n\n"
                             + "Golden Soul - Harness the energy in your body to heal yourself of ailments. Lose all Status Effects and heal 30 health. Mana Cost: 15\n\n" 
                             + "Flurry of Blows - Harness your inner energy to temporarily enhance your striking speed.\n Attack 3 times a turn for the next 2 turns and ignore defense. Mana Cost: 20");
     }//GEN-LAST:event_MonkActionPerformed
