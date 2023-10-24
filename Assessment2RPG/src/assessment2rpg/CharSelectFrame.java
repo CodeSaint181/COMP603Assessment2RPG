@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author sahil
  */
-public class GameStartFrame extends javax.swing.JFrame {
+public class CharSelectFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form GameStartFrame
      */
-    public GameStartFrame() {
+    public CharSelectFrame() {
         initComponents();
     }
 
@@ -57,9 +57,11 @@ public class GameStartFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Creation");
 
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Warrior.jpg"))); // NOI18N
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         classImage.setText("classImage");
+        classImage.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jTextArea_ClassDescription.setEditable(false);
         jTextArea_ClassDescription.setColumns(20);
         jTextArea_ClassDescription.setRows(5);
         jScrollPane3.setViewportView(jTextArea_ClassDescription);
@@ -116,9 +118,7 @@ public class GameStartFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(classImage, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(classImage, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,9 +182,11 @@ public class GameStartFrame extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/flame blade.jpg"))); // NOI18N
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         relicImage.setText("jLabel5");
+        relicImage.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jTextArea_RelicDescription.setEditable(false);
         jTextArea_RelicDescription.setColumns(20);
         jTextArea_RelicDescription.setRows(2);
         jScrollPane4.setViewportView(jTextArea_RelicDescription);
@@ -306,7 +308,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void WarriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WarriorActionPerformed
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Warrior.jpg")));
         classImage.setText("Warrior");
-        charCreatorClass = "warrior";
+        charSelectorClass = "warrior";
         jTextArea_ClassDescription.setText("Ah so you are a warrior!\n"
                             + "You rely on your strong attacks and high defence to reduce damage.\n"
                             + "You can use your skills to counter attack and deliver a large number of blows\n"
@@ -321,7 +323,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void MageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MageActionPerformed
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Mage.jpg")));
         classImage.setText("Mage");
-        charCreatorClass = "mage";
+        charSelectorClass = "mage";
         jTextArea_ClassDescription.setText("Ah very impressive, you are a mage!\n"
                             + "You use your high mana to cast elemental spells and inflict debuffs.\n"
                             + "You can cast your Mage Armour to reduce damage.\n"
@@ -334,7 +336,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.png")));
         classImage.setText("Monk");
-        charCreatorClass = "monk";
+        charSelectorClass = "monk";
         jTextArea_ClassDescription.setText("I see, you are a monk!\n"
                             + "You use your high agility to dodge attacks instead of block.\n"
                             + "You can use your skills to heal yourself and attack multiple times a turn.\n"
@@ -347,10 +349,16 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         if (!"".equals(playerName.getText()))
         {
-            if (!"".equals(charCreatorClass) && !"".equals(charCreatorRelic))
+            if (!"".equals(charSelectorClass) && !"".equals(charSelectorRelic))
             {
-                newPlayer = new RPGPlayer(playerName.getText(), charCreatorClass, charCreatorRelic);
-                System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charCreatorClass+" relic: "+charCreatorRelic);
+                newPlayer = new RPGPlayer(playerName.getText(), charSelectorClass, charSelectorRelic);
+                System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charSelectorClass+" relic: "+charSelectorRelic);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new EnemySelectFrame().setVisible(true);
+                    }
+                });
+                this.setVisible(false);
             }
             else
             {
@@ -372,7 +380,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void LightningBracerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LightningBracerActionPerformed
         relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Lightning Bracer.jpg")));
         relicImage.setText("LightningBracer");
-        charCreatorRelic = "lightning bracer";
+        charSelectorRelic = "lightning bracer";
         jTextArea_RelicDescription.setText("Lightning Bracer - Deal 2-5 damage to enemies when they attack you with a 50% of shock.\n"
                         + "[Shock] - take 1 extra damage for each stack and reduce stack by 1 at end of turn.");
     }//GEN-LAST:event_LightningBracerActionPerformed
@@ -380,7 +388,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void FlameBladeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameBladeActionPerformed
         relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Flame Blade.jpg")));
         relicImage.setText("FlameBlade");
-        charCreatorRelic = "flame blade";
+        charSelectorRelic = "flame blade";
         jTextArea_RelicDescription.setText("Flame Blade - Inflict 2 burn stacks on every hit. \n"
                         + "[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
     }//GEN-LAST:event_FlameBladeActionPerformed
@@ -388,7 +396,7 @@ public class GameStartFrame extends javax.swing.JFrame {
     private void HolyStoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolyStoneActionPerformed
         relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Holy Stone.jpg")));
         relicImage.setText("HolyStone");
-        charCreatorRelic = "holy stone";
+        charSelectorRelic = "holy stone";
         jTextArea_RelicDescription.setText("Holy Stone - Heal half the damage you deal at end of turn.");
     }//GEN-LAST:event_HolyStoneActionPerformed
 
@@ -413,20 +421,21 @@ public class GameStartFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameStartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharSelectFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameStartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharSelectFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameStartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharSelectFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameStartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CharSelectFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameStartFrame().setVisible(true);
+                new CharSelectFrame().setVisible(true);
             }
         });
     }
@@ -457,8 +466,8 @@ public class GameStartFrame extends javax.swing.JFrame {
     private javax.swing.JTextField playerName;
     private javax.swing.JLabel relicImage;
     // End of variables declaration//GEN-END:variables
-    public String charCreatorClass="";
-    public String charCreatorRelic="";
+    public String charSelectorClass="";
+    public String charSelectorRelic="";
     public RPGPlayer newPlayer = null;
 
 }

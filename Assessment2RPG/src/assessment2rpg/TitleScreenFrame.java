@@ -8,12 +8,12 @@ package assessment2rpg;
  *
  * @author sahil
  */
-public class TitleScreenGUI extends javax.swing.JFrame {
+public class TitleScreenFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form TitleScreenGUI
      */
-    public TitleScreenGUI() {
+    public TitleScreenFrame() {
         initComponents();
     }
 
@@ -136,7 +136,7 @@ public class TitleScreenGUI extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameStartFrame().setVisible(true);
+                new CharSelectFrame().setVisible(true);
             }
         });
         this.setVisible(false);
@@ -159,20 +159,21 @@ public class TitleScreenGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TitleScreenGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleScreenFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TitleScreenGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleScreenFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TitleScreenGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleScreenFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TitleScreenGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleScreenFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TitleScreenGUI().setVisible(true);
+                new TitleScreenFrame().setVisible(true);
             }
         });
     }
