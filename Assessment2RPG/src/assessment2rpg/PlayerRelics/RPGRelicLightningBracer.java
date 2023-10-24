@@ -26,8 +26,9 @@ public class RPGRelicLightningBracer extends RPGRelic {
 
     //Overriding method that prints relic description
     @Override
-    public void printRelic() {
-        System.out.println("Lightning Bracer - Deal 2-5 damage to enemies when they attack you and inflict 2 shock. \n[Shock] - take 1 extra damage for each stack and reduce stack by 1 at end of turn");
+    public String printRelic() {
+        String relicString = ("Lightning Bracer - Deal 2-5 damage to enemies when they attack you and inflict 2 shock. \n[Shock] - take 1 extra damage for each stack and reduce stack by 1 at end of turn");
+        return relicString;
     }
 
     //Overriding method that takes a RPGEnemyClass or any extentions 

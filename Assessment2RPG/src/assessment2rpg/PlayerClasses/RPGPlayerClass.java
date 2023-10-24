@@ -46,7 +46,9 @@ public abstract class RPGPlayerClass {
     
     public abstract void removeDebuff(String key, int value);
 
-    public abstract void printStats();
+    public abstract String printStats();
+    
+    public abstract String printStatsWithoutSkills();
 
     public abstract void loadClassAbilities();
     

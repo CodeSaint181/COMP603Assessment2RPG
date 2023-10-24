@@ -52,4 +52,9 @@ public class RPGEnemy {
         enemyClass.printEnemyStats();                   //Prints Enemy Statistics from the extended RPGEnemyClass that was selected in the constructor
     }
     
+    public static String printEnemyStatusWithoutSkills() {
+        String enemyStatusString=enemyClass.printEnemyStatsWithoutSkills();                   //Prints Enemy Statistics from the extended RPGEnemyClass that was selected in the constructor
+        return enemyStatusString;
+    }
+    
 }

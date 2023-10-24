@@ -95,6 +95,23 @@ public class RPGGhostClass extends RPGEnemyClass {
         System.out.println("===============");
     }
     
+    @Override
+    public String printEnemyStatsWithoutSkills() {
+        String enemyStatString="";
+        enemyStatString=(enemyStatString+"Enemy: "+this.name);
+        enemyStatString=(enemyStatString+"\n===============");
+        enemyStatString=(enemyStatString+"\nMax Health: "+this.healthPoints);
+        enemyStatString=(enemyStatString+"\nStrength: "+this.strength);
+        enemyStatString=(enemyStatString+"\nAgility: "+this.agility);
+        enemyStatString=(enemyStatString+"\nIntellect: "+this.intellect);
+        enemyStatString=(enemyStatString+"\n===============");
+        enemyStatString=(enemyStatString+"\nAttack Points: "+this.attackPoints);
+        enemyStatString=(enemyStatString+"\nDodge Chance: "+this.dodge*5+"%");
+        enemyStatString=(enemyStatString+"\nDefense: "+this.defense);
+        enemyStatString=(enemyStatString+"\n===============");
+        return enemyStatString;
+    }
+    
     
     //basic overriding getters to access variables outside of this class
     @Override

@@ -136,7 +136,7 @@ public class TitleScreenFrame extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CharSelectFrame().setVisible(true);
+                new CharSelectFrame(null, null).setVisible(true);
             }
         });
         this.setVisible(false);

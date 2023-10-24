@@ -22,7 +22,7 @@ public abstract class RPGRelic {
     }
     
     //abstracted methods that will be overridden in extended relic classes
-    public abstract void printRelic();
+    public abstract String printRelic();
 
     public abstract int relicTriggerEnemy(RPGEnemyClass e);
     

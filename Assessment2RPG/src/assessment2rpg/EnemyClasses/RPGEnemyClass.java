@@ -48,6 +48,8 @@ public abstract class RPGEnemyClass {
     public abstract void removeDebuff(String key, int value);
 
     public abstract void printEnemyStats();
+    
+    public abstract String printEnemyStatsWithoutSkills();
 
     public abstract void loadEnemyAbilities();
     

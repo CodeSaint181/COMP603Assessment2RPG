@@ -15,9 +15,13 @@ public class CharSelectFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form GameStartFrame
+     * @param player
+     * @param enemy
      */
-    public CharSelectFrame() {
+    public CharSelectFrame(RPGPlayer player, RPGEnemy enemy) {
         initComponents();
+        newPlayer = player;
+        createdEnemy = enemy;
     }
 
     /**
@@ -118,7 +122,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(classImage, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(classImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,7 +272,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                         .addGap(36, 36, 36))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(relicImage, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(relicImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -334,7 +338,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MageActionPerformed
 
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.png")));
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.jpg")));
         classImage.setText("Monk");
         charSelectorClass = "monk";
         jTextArea_ClassDescription.setText("I see, you are a monk!\n"
@@ -353,12 +357,25 @@ public class CharSelectFrame extends javax.swing.JFrame {
             {
                 newPlayer = new RPGPlayer(playerName.getText(), charSelectorClass, charSelectorRelic);
                 System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charSelectorClass+" relic: "+charSelectorRelic);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new EnemySelectFrame().setVisible(true);
-                    }
-                });
-                this.setVisible(false);
+                if (createdEnemy == null)
+                {
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new EnemySelectFrame(newPlayer).setVisible(true);
+                        }
+                    });
+                    this.setVisible(false);
+                }
+                else 
+                {
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new PreBattleConfirmationFrame(newPlayer, createdEnemy).setVisible(true);
+                        }
+                    });
+                    this.setVisible(false);
+                }
+                
             }
             else
             {
@@ -435,7 +452,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CharSelectFrame().setVisible(true);
+                new CharSelectFrame(null, null).setVisible(true);
             }
         });
     }
@@ -469,5 +486,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
     public String charSelectorClass="";
     public String charSelectorRelic="";
     public RPGPlayer newPlayer = null;
+    public RPGEnemy createdEnemy = null;
 
 }

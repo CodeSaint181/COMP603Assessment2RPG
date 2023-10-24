@@ -70,9 +70,18 @@ public class RPGPlayer {
     
     //Method to print stats and relic description using methods from the
     //corresponding extended objects
-    public static void printStatus() {
-        playerClass.printStats();        //Prints Class Statistics from the extended RPGPlayerClass that was selected in the constructor
-        playerRelic.printRelic();        //Prints Relic Description from the extended RPGRelic that was selected in the constructor
-        System.out.println("=======Debuffs======");
+    public static String printStatus() {
+        String statusString="";
+        statusString=(playerClass.printStats());        //Prints Class Statistics from the extended RPGPlayerClass that was selected in the constructor
+        statusString=statusString+(playerRelic.printRelic());        //Prints Relic Description from the extended RPGRelic that was selected in the constructor
+        statusString=(statusString+"\n=======Debuffs======");
+        return statusString;
+    }
+    
+    public static String printStatusWithoutSkills() {
+        String statusString="";
+        statusString=(playerClass.printStatsWithoutSkills());        //Prints Class Statistics from the extended RPGPlayerClass that was selected in the constructor
+        statusString=statusString+(playerRelic.printRelic());        //Prints Relic Description from the extended RPGRelic that was selected in the constructor
+        return statusString;
     }
 }

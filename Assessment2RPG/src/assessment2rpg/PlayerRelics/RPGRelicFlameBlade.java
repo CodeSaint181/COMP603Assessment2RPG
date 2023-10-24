@@ -26,8 +26,9 @@ public class RPGRelicFlameBlade extends RPGRelic {
 
     //Overriding method that prints relic description
     @Override
-    public void printRelic() {
-        System.out.println("Flame Blade - Inflict 1 Burn stack on every hit. \n[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
+    public String printRelic() {
+        String relicString = ("Flame Blade - Inflict 1 Burn stack on every hit. \n[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
+        return relicString;
     }
 
     //Overriding method that takes a RPGEnemyClass or any extentions 

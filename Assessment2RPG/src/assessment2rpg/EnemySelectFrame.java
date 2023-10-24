@@ -17,9 +17,11 @@ public class EnemySelectFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form EnemySelectFrame
+     * @param player
      */
-    public EnemySelectFrame() {
+    public EnemySelectFrame(RPGPlayer player) {
         initComponents();
+        createdPlayer = player;
     }
 
     /**
@@ -47,6 +49,8 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(0, 0));
 
         buttonGroup1.add(Slime);
         Slime.setText("Slime");
@@ -101,29 +105,31 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Slime)
-                    .addComponent(Skeleton)
-                    .addComponent(Ghost)
-                    .addComponent(jButton_EnemyConfirm))
+                    .addComponent(jButton_EnemyConfirm)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Slime)
+                            .addComponent(Skeleton)
+                            .addComponent(Ghost))))
                 .addGap(54, 54, 54)
                 .addComponent(enemyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Slime)
                             .addComponent(jLabel2))
@@ -135,7 +141,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Skeleton)
                             .addComponent(jLabel4))
-                        .addGap(79, 79, 79)
+                        .addGap(45, 45, 45)
                         .addComponent(jButton_EnemyConfirm))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -153,7 +159,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(234, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(249, 249, 249))
         );
@@ -171,9 +177,11 @@ public class EnemySelectFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +196,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SlimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SlimeActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/slime.png")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Slime.jpg")));
         enemyImage.setText("slime");
         enemySelectorClass = "slime";
         jTextArea_EnemyDescription.setFont(f);
@@ -196,7 +204,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_SlimeActionPerformed
 
     private void GhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GhostActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/ghost.jpg")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Ghost.jpg")));
         enemyImage.setText("ghost");
         enemySelectorClass = "ghost";
         jTextArea_EnemyDescription.setFont(f);
@@ -204,7 +212,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_GhostActionPerformed
 
     private void SkeletonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkeletonActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/skeleton.jpg")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Skeleton.jpg")));
         enemyImage.setText("skeleton");
         enemySelectorClass = "skeleton";
         jTextArea_EnemyDescription.setFont(f);
@@ -216,6 +224,12 @@ public class EnemySelectFrame extends javax.swing.JFrame {
             {
                 newEnemy = new RPGEnemy(enemySelectorClass);
                 System.out.println("Created new enemy with Class "+ enemySelectorClass);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new PreBattleConfirmationFrame(createdPlayer, newEnemy).setVisible(true);
+                    }
+                });
+                this.setVisible(false);
             }
             else
             {
@@ -254,7 +268,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EnemySelectFrame().setVisible(true);
+                new EnemySelectFrame(null).setVisible(true);
             }
         });
     }
@@ -277,5 +291,6 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public String enemySelectorClass="";
     public RPGEnemy newEnemy = null;
+    public RPGPlayer createdPlayer = null;
     Font f = new Font("Verdana", Font.PLAIN, 16);
 }

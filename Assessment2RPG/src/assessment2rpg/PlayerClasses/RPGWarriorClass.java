@@ -78,22 +78,42 @@ public class RPGWarriorClass extends RPGPlayerClass {
     
     //method to print out the enemy stats in a presentable fashion
     @Override
-    public void printStats() {
-        System.out.println("Class: "+this.name);
-        System.out.println("=======Stats========");
-        System.out.println("Strength: "+this.strength);
-        System.out.println("Agility: "+this.agility);
-        System.out.println("Intellect: "+this.intellect);
-        System.out.println("====================");
-        System.out.println("Attack Points: "+this.attackPoints);
-        System.out.println("Dodge Chance: "+this.dodge*5+"%");
-        System.out.println("Defense: "+this.defense);
-        System.out.println("=======Skills=======");
+    public String printStats() {
+        String statString="";
+        statString=(statString+"Class: "+this.name);
+        statString=(statString+"\n=======Stats========");
+        statString=(statString+"\nStrength: "+this.strength);
+        statString=(statString+"\nAgility: "+this.agility);
+        statString=(statString+"\nIntellect: "+this.intellect);
+        statString=(statString+"\n====================");
+        statString=(statString+"\nAttack Points: "+this.attackPoints);
+        statString=(statString+"\nDodge Chance: "+this.dodge*5+"%");
+        statString=(statString+"\nDefense: "+this.defense);
+        statString=(statString+"\n=======Skills=======\n");
         //for each entry in hashmap abilities, print out the values at arraylist positions 0, 1, and 3 (Name, Desc, and Mana Cost)
         for (Map.Entry<Integer, ArrayList<String>> m : abilities.entrySet()) {    //For loop to iterate through the hashmap to print out the values
-            System.out.println((m.getValue().get(0))+" - "+(m.getValue().get(1))+"  Mana Cost: "+(m.getValue().get(3))+"\n");
+            statString=(statString+(m.getValue().get(0))+" - "+(m.getValue().get(1))+"  Mana Cost: "+(m.getValue().get(3))+"\n");
         }
-        System.out.println("=======Relic========");
+        statString=(statString+"\n=======Relic========");
+        return statString;
+    }
+    
+    @Override
+    public String printStatsWithoutSkills() {
+        String statString="";
+        statString=(statString+"Class: "+this.name);
+        statString=(statString+"\n=======Stats========");
+        statString=(statString+"\nMax Health: "+this.healthPoints);
+        statString=(statString+"\nMax Mana: "+this.manaPoints);
+        statString=(statString+"\nStrength: "+this.strength);
+        statString=(statString+"\nAgility: "+this.agility);
+        statString=(statString+"\nIntellect: "+this.intellect);
+        statString=(statString+"\n====================");
+        statString=(statString+"\nAttack Points: "+this.attackPoints);
+        statString=(statString+"\nDodge Chance: "+this.dodge*5+"%");
+        statString=(statString+"\nDefense: "+this.defense);
+        statString=(statString+"\n=======Relic========\n");
+        return statString;
     }
 
     //basic overriding getters to access variables outside of this class
