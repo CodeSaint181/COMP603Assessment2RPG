@@ -5,18 +5,20 @@
 
 package assessment2rpg;
 
-import java.awt.Color;
-import javax.swing.UIManager;
-
 /**
  *
  * @author sahil
  */
 public class BattleFrame extends javax.swing.JFrame {
 
-    /** Creates new form BattleFrame */
-    public BattleFrame() {
+    /** Creates new form BattleFrame 
+     * @param player
+     * @param enemy
+     */
+    public BattleFrame(RPGPlayer player, RPGEnemy enemy) {
         initComponents();
+        createdPlayer = player;
+        createdEnemy = enemy;
     }
 
     /** This method is called from within the constructor to
@@ -39,10 +41,9 @@ public class BattleFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jLayeredPane = new javax.swing.JLayeredPane();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,6 +55,7 @@ public class BattleFrame extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
         jLabel2.setText("jLabel2");
 
         jButton1.setText("jButton1");
@@ -130,41 +132,35 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("tab1", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(133, 88, 8));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLayeredPane.setBackground(new java.awt.Color(231, 215, 0));
+        jLayeredPane.setBackground(new java.awt.Color(148, 90, 33));
         jLayeredPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLayeredPane.setOpaque(true);
 
-        jLabel4.setText("jLabel4");
-        jLayeredPane.add(jLabel4);
-        jLabel4.setBounds(930, 260, 41, 16);
-
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
         jLabel5.setText("jLabel5");
+        jLabel5.setDisplayedMnemonicIndex(0);
+        jLabel5.setOpaque(true);
         jLayeredPane.add(jLabel5);
-        jLabel5.setBounds(280, 440, 41, 16);
+        jLabel5.setBounds(300, 530, 150, 150);
+        jLayeredPane.remove(jLabel5);
+        jLayeredPane.add(jLabel5,1);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+".jpg")));
+        jLabel6.setText("jLabel5");
+        jLabel6.setDisplayedMnemonicIndex(1);
+        jLabel6.setOpaque(true);
+        jLayeredPane.add(jLabel6);
+        jLabel6.setBounds(870, 200, 140, 150);
+        jLayeredPane.remove(jLabel6);
+        jLayeredPane.add(jLabel6,0);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/battleBGGrass.png"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel3.setOpaque(true);
         jLayeredPane.add(jLabel3);
-        jLabel3.setBounds(10, 10, 760, 640);
-        jLayeredPane.add(jLabel3,0);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE))
-        );
+        jLabel3.setBounds(20, 20, 980, 640);
+        jLayeredPane.remove(jLabel3);
+        jLayeredPane.add(jLabel3,2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,8 +168,8 @@ public class BattleFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane2)
                 .addContainerGap())
         );
@@ -181,10 +177,11 @@ public class BattleFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(33, Short.MAX_VALUE))
+                    .addComponent(jLayeredPane, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         pack();
@@ -216,11 +213,12 @@ public class BattleFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BattleFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        RPGPlayer createdPlayer = new RPGPlayer("kirm","warrior","flame blade");
+        RPGEnemy createdEnemy = new RPGEnemy("slime");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BattleFrame().setVisible(true);
+                new BattleFrame(createdPlayer, createdEnemy).setVisible(true);
             }
         });
     }
@@ -233,15 +231,15 @@ public class BattleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_BattleChoice;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
-
+    public RPGPlayer createdPlayer = null;
+    public RPGEnemy createdEnemy = null;
 }

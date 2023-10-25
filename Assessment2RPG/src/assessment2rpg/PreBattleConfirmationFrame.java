@@ -264,24 +264,29 @@ public class PreBattleConfirmationFrame extends javax.swing.JFrame {
 
     private void charSelectReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charSelectReturnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            new CharSelectFrame(createdPlayer, createdEnemy).setVisible(true);
-                        }
-                    });
-                    this.setVisible(false);
+            public void run() {
+                new CharSelectFrame(createdPlayer, createdEnemy).setVisible(true);
+            }
+        });
+        this.setVisible(false);
     }//GEN-LAST:event_charSelectReturnActionPerformed
 
     private void EnemySelectReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnemySelectReturnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                            new EnemySelectFrame(createdPlayer).setVisible(true);
-                        }
-                    });
-                    this.setVisible(false);
+            public void run() {
+                new EnemySelectFrame(createdPlayer).setVisible(true);
+            }
+        });
+        this.setVisible(false);
     }//GEN-LAST:event_EnemySelectReturnActionPerformed
 
     private void startBattleConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBattleConfirmActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new BattleFrame(createdPlayer, createdEnemy).setVisible(true);
+            }
+        });
+        this.setVisible(false);
     }//GEN-LAST:event_startBattleConfirmActionPerformed
 
     /**
