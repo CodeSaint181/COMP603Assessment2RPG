@@ -6,6 +6,7 @@
 package assessment2rpg;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import javax.swing.*;
 import javax.swing.UIDefaults;
@@ -53,26 +54,27 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel_BattleChoice = new javax.swing.JPanel();
+        PlayerName = new javax.swing.JLabel();
+        PlayerIcon = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        PlayerDescription = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        BattleLog = new javax.swing.JTextArea();
+        BattleLogHeader = new javax.swing.JLabel();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         NormalAttack = new javax.swing.JButton();
         DefendButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        AbilitySelector = new javax.swing.JList<>();
+        AbilityCastButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        BattleLog = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        PlayerDescription2 = new javax.swing.JTextArea();
+        PlayerImage = new javax.swing.JLabel();
+        PlayerName2 = new javax.swing.JLabel();
         jLayeredPane = new javax.swing.JLayeredPane();
         PlayerManaText = new javax.swing.JLabel();
         PlayerManaBar = new javax.swing.JProgressBar();
@@ -86,10 +88,25 @@ public class BattleFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        PlayerName.setText("jLabel1");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
-        jLabel2.setText("jLabel2");
+        PlayerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
+        PlayerIcon.setText("jLabel2");
+
+        PlayerDescription.setColumns(20);
+        PlayerDescription.setLineWrap(true);
+        PlayerDescription.setRows(5);
+        PlayerDescription.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(PlayerDescription);
+        PlayerDescription.setText(RPGPlayer.printStatusWithoutSkills());
+
+        BattleLog.setColumns(20);
+        BattleLog.setRows(5);
+        jScrollPane4.setViewportView(BattleLog);
+        BattleLog.append("Turn "+BattleManager.turnCounter+"\n");
+
+        BattleLogHeader.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        BattleLogHeader.setText("Battle Log");
 
         NormalAttack.setText("Normal Attack");
         NormalAttack.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +129,7 @@ public class BattleFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(NormalAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(DefendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
         );
@@ -128,30 +145,49 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Attack", jPanel3);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        AbilitySelector.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = {""+RPGPlayer.playerClass.getAbility(1).get(0)+" - Mana Cost: "+RPGPlayer.playerClass.getAbility(1).get(3)+" - Desc: "+RPGPlayer.playerClass.getAbility(1).get(1), ""+RPGPlayer.playerClass.getAbility(2).get(0)+" - Mana Cost: "+RPGPlayer.playerClass.getAbility(2).get(3)+" - Desc: "+RPGPlayer.playerClass.getAbility(2).get(1), ""+RPGPlayer.playerClass.getAbility(3).get(0)+" - Mana Cost: "+RPGPlayer.playerClass.getAbility(3).get(3)+" - Desc: "+RPGPlayer.playerClass.getAbility(3).get(1)};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setVisibleRowCount(3);
-        jScrollPane1.setViewportView(jList1);
+        AbilitySelector.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        AbilitySelector.setVisibleRowCount(3);
+        AbilitySelector.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                AbilitySelectorValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(AbilitySelector);
+
+        AbilityCastButton.setText("Use Selected Ability");
+        AbilityCastButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbilityCastButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(AbilityCastButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(AbilityCastButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Ability", jPanel4);
@@ -160,54 +196,36 @@ public class BattleFrame extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 504, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGap(0, 208, Short.MAX_VALUE)
         );
 
         jTabbedPane.addTab("Forfeit", jPanel6);
-
-        javax.swing.GroupLayout jPanel_BattleChoiceLayout = new javax.swing.GroupLayout(jPanel_BattleChoice);
-        jPanel_BattleChoice.setLayout(jPanel_BattleChoiceLayout);
-        jPanel_BattleChoiceLayout.setHorizontalGroup(
-            jPanel_BattleChoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane)
-        );
-        jPanel_BattleChoiceLayout.setVerticalGroup(
-            jPanel_BattleChoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BattleChoiceLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane))
-        );
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        BattleLog.setColumns(20);
-        BattleLog.setRows(5);
-        jScrollPane4.setViewportView(BattleLog);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jPanel_BattleChoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)))
-                .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(BattleLogHeader))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(PlayerName)
+                                    .addComponent(PlayerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,64 +233,76 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(PlayerName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PlayerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_BattleChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BattleLogHeader)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         UIDefaults healthBar = new UIDefaults();
         healthBar.put("ProgressBar[Enabled].foregroundPainter", new MyPainter(Color.RED));
         healthBar.put("ProgressBar[Enabled].backgroundPainter", new MyPainter(Color.WHITE));
+        JLabel attacktab = new javax.swing.JLabel();
+        attacktab.setPreferredSize(new Dimension(140, 30));
+        attacktab.setText("Attack");
+
+        JLabel abilitytab = new javax.swing.JLabel();
+        abilitytab.setPreferredSize(new Dimension(140, 30));
+        abilitytab.setText("Ability");
+
+        JLabel forfeittab = new javax.swing.JLabel();
+        forfeittab.setPreferredSize(new Dimension(140, 30));
+        forfeittab.setText("Forfeit");
+
+        jTabbedPane.setTabComponentAt(0, attacktab);
+        jTabbedPane.setTabComponentAt(1, abilitytab);
+        jTabbedPane.setTabComponentAt(2, forfeittab);
 
         jTabbedPane2.addTab("tab1", jPanel2);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-        jTextArea1.setText(RPGPlayer.printStatusWithoutSkills());
+        PlayerDescription2.setColumns(20);
+        PlayerDescription2.setLineWrap(true);
+        PlayerDescription2.setRows(5);
+        jScrollPane3.setViewportView(PlayerDescription2);
+        PlayerDescription2.setText(RPGPlayer.printStatusWithoutSkills());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
-        jLabel4.setText("jLabel2");
+        PlayerImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
 
-        jLabel5.setText("jLabel1");
+        PlayerName2.setText(RPGPlayer.name);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(73, 73, 73)
-                            .addComponent(jLabel5)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(23, 23, 23)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PlayerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(PlayerName2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(151, 151, 151)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(151, 151, 151)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(PlayerName2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                        .addComponent(PlayerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(296, 296, 296))
         );
 
         jTabbedPane2.addTab("tab2", jPanel1);
@@ -282,10 +312,10 @@ public class BattleFrame extends javax.swing.JFrame {
         jLayeredPane.setOpaque(true);
 
         PlayerManaText.setBackground(new java.awt.Color(255, 204, 0));
-        PlayerManaText.setText("jLabel7");
+        PlayerManaText.setText(BattleManager.playerMana+" / "+RPGPlayer.playerClass.getManaPoints());
         PlayerManaText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(PlayerManaText);
-        PlayerManaText.setBounds(180, 530, 43, 18);
+        PlayerManaText.setBounds(180, 570, 76, 18);
         jLayeredPane.remove(PlayerManaText);
         jLayeredPane.add(PlayerManaText,14);
 
@@ -296,9 +326,12 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerManaBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PlayerManaBar.setOpaque(true);
         jLayeredPane.add(PlayerManaBar);
-        PlayerManaBar.setBounds(50, 520, 300, 40);
+        PlayerManaBar.setBounds(50, 560, 300, 40);
         jLayeredPane.remove(PlayerManaBar);
         jLayeredPane.add(PlayerManaBar,16);
+
+        PlayerManaBar.setMaximum(RPGPlayer.playerClass.getManaPoints()+1);
+        PlayerManaBar.setValue(BattleManager.playerMana);
 
         UIDefaults manaBar = new UIDefaults();
         manaBar.put("ProgressBar[Enabled].foregroundPainter", new MyPainter(Color.BLUE));
@@ -310,7 +343,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
         PlayerHealthText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(PlayerHealthText);
-        PlayerHealthText.setBounds(180, 460, 76, 18);
+        PlayerHealthText.setBounds(180, 500, 76, 18);
         jLayeredPane.remove(PlayerHealthText);
         jLayeredPane.add(PlayerHealthText,15);
 
@@ -318,7 +351,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerSprite.setText("PlayerSprite");
         PlayerSprite.setOpaque(true);
         jLayeredPane.add(PlayerSprite);
-        PlayerSprite.setBounds(370, 450, 150, 150);
+        PlayerSprite.setBounds(370, 490, 150, 150);
         jLayeredPane.remove(PlayerSprite);
         jLayeredPane.add(PlayerSprite,18);
 
@@ -326,7 +359,7 @@ public class BattleFrame extends javax.swing.JFrame {
         EnemySprite.setText("EnemySprite");
         EnemySprite.setOpaque(true);
         jLayeredPane.add(EnemySprite);
-        EnemySprite.setBounds(440, 190, 140, 150);
+        EnemySprite.setBounds(440, 230, 140, 150);
         jLayeredPane.remove(EnemySprite);
         jLayeredPane.add(EnemySprite,19);
 
@@ -334,7 +367,7 @@ public class BattleFrame extends javax.swing.JFrame {
         EnemyHealthText.setText(BattleManager.enemyHealth+" / "+RPGEnemy.enemyClass.getHealthPoints());
         EnemyHealthText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(EnemyHealthText);
-        EnemyHealthText.setBounds(730, 200, 76, 18);
+        EnemyHealthText.setBounds(730, 240, 76, 18);
         jLayeredPane.remove(EnemyHealthText);
         jLayeredPane.add(EnemyHealthText,13);
 
@@ -345,7 +378,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerHealthBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PlayerHealthBar.setOpaque(true);
         jLayeredPane.add(PlayerHealthBar);
-        PlayerHealthBar.setBounds(50, 450, 300, 40);
+        PlayerHealthBar.setBounds(50, 490, 300, 40);
         jLayeredPane.remove(PlayerHealthBar);
         jLayeredPane.add(PlayerHealthBar,17);
 
@@ -364,7 +397,7 @@ public class BattleFrame extends javax.swing.JFrame {
         EnemyHealthBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         EnemyHealthBar.setOpaque(true);
         jLayeredPane.add(EnemyHealthBar);
-        EnemyHealthBar.setBounds(600, 190, 300, 40);
+        EnemyHealthBar.setBounds(600, 230, 300, 40);
         //healthBar.put("ProgressBar[Enabled].foregroundPainter", new MyPainter(Color.RED));
         //healthBar.put("ProgressBar[Enabled].backgroundPainter", new MyPainter(Color.WHITE));
         EnemyHealthBar.setMaximum(RPGEnemy.enemyClass.getHealthPoints()+1);
@@ -379,7 +412,7 @@ public class BattleFrame extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setOpaque(true);
         jLayeredPane.add(jLabel3);
-        jLabel3.setBounds(20, 20, 900, 640);
+        jLabel3.setBounds(20, 60, 900, 720);
         jLayeredPane.remove(jLabel3);
         jLayeredPane.add(jLabel3,20);
 
@@ -391,17 +424,16 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2)
-                .addContainerGap())
+                .addComponent(jTabbedPane2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLayeredPane)
+                    .addComponent(jTabbedPane2))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,17 +445,34 @@ public class BattleFrame extends javax.swing.JFrame {
 
     private void NormalAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NormalAttackActionPerformed
         BattleManager.attack();
-        BattleLog.append(BattleManager.combatLog+"\n");
+        BattleLog.append(BattleManager.playerTurnEnd()+"\n");
         updateHealthBars();
     }//GEN-LAST:event_NormalAttackActionPerformed
 
+    private void AbilitySelectorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AbilitySelectorValueChanged
+        SelectedAbilityIndex = AbilitySelector.getSelectedIndex()+1;
+    }//GEN-LAST:event_AbilitySelectorValueChanged
+
+    private void AbilityCastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbilityCastButtonActionPerformed
+        BattleManager.ability(SelectedAbilityIndex);
+        BattleLog.append(BattleManager.playerTurnEnd());
+        
+        updateHealthBars();
+    }//GEN-LAST:event_AbilityCastButtonActionPerformed
+
     private void updateHealthBars()
     {
-        EnemyHealthText.setText(BattleManager.enemyHealth+" / "+RPGEnemy.enemyClass.getHealthPoints());
         EnemyHealthBar.setValue(BattleManager.enemyHealth);
+        EnemyHealthText.setText(BattleManager.enemyHealth+" / "+RPGEnemy.enemyClass.getHealthPoints());
+        EnemyHealthText.updateUI();
         
-        PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
+        PlayerManaBar.setValue(BattleManager.playerMana);
+        PlayerManaText.setText(BattleManager.playerMana+" / "+RPGPlayer.playerClass.getManaPoints());
+        
         PlayerHealthBar.setValue(BattleManager.playerHealth);
+        PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
+        PlayerHealthText.updateUI();
+        
     }
     /**
      * @param args the command line arguments
@@ -452,7 +501,7 @@ public class BattleFrame extends javax.swing.JFrame {
         }
         
         //</editor-fold>
-        RPGPlayer createdPlayer = new RPGPlayer("kirm","warrior","flame blade");
+        RPGPlayer createdPlayer = new RPGPlayer("kirm","mage","flame blade");
         RPGEnemy createdEnemy = new RPGEnemy("slime");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -463,40 +512,42 @@ public class BattleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AbilityCastButton;
+    private javax.swing.JList<String> AbilitySelector;
     private javax.swing.JTextArea BattleLog;
+    private javax.swing.JLabel BattleLogHeader;
     private javax.swing.JButton DefendButton;
     private javax.swing.JProgressBar EnemyHealthBar;
     private javax.swing.JLabel EnemyHealthText;
     private javax.swing.JLabel EnemySprite;
     private javax.swing.JButton NormalAttack;
+    private javax.swing.JTextArea PlayerDescription;
+    private javax.swing.JTextArea PlayerDescription2;
     private javax.swing.JProgressBar PlayerHealthBar;
     private javax.swing.JLabel PlayerHealthText;
+    private javax.swing.JLabel PlayerIcon;
+    private javax.swing.JLabel PlayerImage;
     private javax.swing.JProgressBar PlayerManaBar;
     private javax.swing.JLabel PlayerManaText;
+    private javax.swing.JLabel PlayerName;
+    private javax.swing.JLabel PlayerName2;
     private javax.swing.JLabel PlayerSprite;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel_BattleChoice;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
     // End of variables declaration//GEN-END:variables
     public RPGPlayer createdPlayer = null;
     public RPGEnemy createdEnemy = null;
     public BattleStart BattleManager = new BattleStart(createdPlayer, createdEnemy);
+    public int SelectedAbilityIndex;
 }
