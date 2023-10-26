@@ -5,6 +5,7 @@
 package assessment2rpg.PlayerRelics;
 
 import assessment2rpg.EnemyClasses.RPGEnemyClass;
+import assessment2rpg.RPGEnemy;
 
 /**********************
  * Group 75 COMP603/52A
@@ -54,6 +55,16 @@ public class RPGRelicFlameBlade extends RPGRelic {
     public String getTrigger()
     {
         return triggerCondition;
+    }
+
+    @Override
+    public String printRelicLogEnemy(RPGEnemyClass e) {
+        return ("Your Relic Inflicted 2 Burn onto "+e.name+"\n");
+    }
+
+    @Override
+    public String printRelicLogSelf() {
+        return "Invalid Target";
     }
     
 }

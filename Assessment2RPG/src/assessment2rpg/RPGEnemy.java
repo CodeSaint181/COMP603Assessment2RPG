@@ -22,6 +22,7 @@ public class RPGEnemy {
     static RPGEnemyClass enemyClass=null;   //creates variable of abstract class RPGEnemyClass
     
     String name ="";
+    static int enemyHealth;
     
     public RPGEnemy(String newEnemyClass)
     {
@@ -30,18 +31,21 @@ public class RPGEnemy {
                 name="Slime";                           //sets enemy name variable to corresponding enemy class
                 enemyClass = new RPGSlimeClass();       //creates RPGSlimeClass object as an extended RPGEnemyClass
                 enemyClass.loadEnemyAbilities();        //loads enemy abilities using method from RPGSlimeClass
+                enemyHealth = enemyClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
             case "skeleton": {                          //if newEnemyClass string is equal to "skeleton"
                 name="Skeleton";                        //sets enemy name variable to corresponding enemy class
                 enemyClass = new RPGSkeletonClass();    //creates RPGSkeletonClass object as an extended RPGEnemyClass
                 enemyClass.loadEnemyAbilities();        //loads enemy abilities using method from RPGSkeletonClass
+                enemyHealth = enemyClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
             case "ghost": {                              //if newEnemyClass string is equal to "ghost"
                 name="Ghost";                            //sets enemy name variable to corresponding enemy class
                 enemyClass = new RPGGhostClass();        //creates RPGSlimeClass object as an extended RPGEnemyClass
                 enemyClass.loadEnemyAbilities();         //loads enemy abilities using method from RPGSkeletonClass
+                enemyHealth = enemyClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
         }
@@ -57,4 +61,10 @@ public class RPGEnemy {
         return enemyStatusString;
     }
     
+    public int takeDamage(int i)
+    {
+        enemyHealth = enemyHealth-i;
+        return enemyHealth;
+    }
+            
 }

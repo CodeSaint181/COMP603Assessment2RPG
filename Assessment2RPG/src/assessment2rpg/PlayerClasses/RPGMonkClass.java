@@ -45,19 +45,19 @@ public class RPGMonkClass extends RPGPlayerClass {
     //It also allows for easy editing of the values without changing multiple sets of text
     public void initializeClassAbilities(){
         this.playerAbility1.add("Quivering Palm");  //each of these add statements adds the specified text at the next index in the arraylist
-        this.playerAbility1.add("Strike your foe and cause them to take more damage for 2 turns. \n"
-                + "Deals 8 Base Damage, ignores Defence and inflicts 3 Vulnerable. "
-                + "[Vulnerable] - take 2x damage from attacks.");
+        this.playerAbility1.add("Strike your foe and cause them to take more damage for 2 turns.\n"
+                + " Deals 8 Base Damage, ignores Defence and inflicts 3 Vulnerable. "
+                + " [Vulnerable] - take 2x damage from attacks.");
         this.playerAbility1.add("8");
         this.playerAbility1.add("15");        
         this.playerAbility2.add("Golden Soul");
         this.playerAbility2.add("Harness the energy in your body to heal yourself of ailments.\n"
-                + "Lose all Status Effects and heal 30 health.");
+                + " Lose all Status Effects and heal 30 health.");
         this.playerAbility2.add("30");
         this.playerAbility2.add("15");
         this.playerAbility3.add("Flurry of Blows");
         this.playerAbility3.add("Harness your inner energy to temporarily enhance your striking speed.\n"
-                + "Attack 3 times a turn for the next 2 turns and ignore defense.");
+                + " Attack 3 times a turn for the next 2 turns and ignore defense.");
         this.playerAbility3.add("15");
         this.playerAbility3.add("20");
     }

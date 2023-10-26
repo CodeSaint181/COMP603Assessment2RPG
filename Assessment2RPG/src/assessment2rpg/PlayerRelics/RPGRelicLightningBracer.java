@@ -58,4 +58,14 @@ public class RPGRelicLightningBracer extends RPGRelic {
     {
         return triggerCondition;
     }
+    
+    @Override
+    public String printRelicLogEnemy(RPGEnemyClass e) {
+        return ("Your Relic Inflicted 2 Shock onto "+e.name+"!\nYour Relic Dealt "+damage+" damage to "+e.name+".\n");
+    }
+
+    @Override
+    public String printRelicLogSelf() {
+        return "Invalid Target";
+    }
 }

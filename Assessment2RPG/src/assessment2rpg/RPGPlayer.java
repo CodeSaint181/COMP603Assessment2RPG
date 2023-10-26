@@ -27,6 +27,7 @@ public class RPGPlayer {
     static RPGPlayerClass playerClass = null;        //creates variable of abstract class RPGPlayerClass
     static String className = "";
     static RPGRelic playerRelic = null;             //creates variable of abstract class RPGRelic
+    static int playerHealth;
     
     public RPGPlayer(String newName, String newPlayerClass, String newRelic)
     {
@@ -36,18 +37,21 @@ public class RPGPlayer {
                 className="warrior";                    //sets className variable to corresponding PlayerClass
                 playerClass = new RPGWarriorClass();    //creates RPGWarriorClass object as an extended RPGPlayerClass
                 playerClass.loadClassAbilities();       //loads class abilities using method from RPGWarriorClass
+                playerHealth = playerClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
             case "mage": {                              //if newPlayerClass string is equal to "mage"
                 className="mage";                       //sets className variable to corresponding PlayerClass
                 playerClass = new RPGMageClass();       //creates RPGMageClass object as an extended RPGPlayerClass
                 playerClass.loadClassAbilities();       //loads class abilities using method from RPGMageClass
+                playerHealth = playerClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
             case "monk": {                              //if newPlayerClass string is equal to "warrior"
                 className="monk";                       //sets className variable to corresponding PlayerClass
                 playerClass = new RPGMonkClass();       //creates RPGMageClass object as an extended RPGPlayerClass
                 playerClass.loadClassAbilities();       //loads class abilities using method from RPGMageClass
+                playerHealth = playerClass.getHealthPoints();
                 break;        //breaks out of switch-case
             }
         }
@@ -83,5 +87,11 @@ public class RPGPlayer {
         statusString=(playerClass.printStatsWithoutSkills());        //Prints Class Statistics from the extended RPGPlayerClass that was selected in the constructor
         statusString=statusString+(playerRelic.printRelic());        //Prints Relic Description from the extended RPGRelic that was selected in the constructor
         return statusString;
+    }
+    
+    public int takeDamage(int i)
+    {
+        playerHealth = playerHealth-i;
+        return playerHealth;
     }
 }

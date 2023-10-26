@@ -46,19 +46,19 @@ public class RPGMageClass extends RPGPlayerClass {
     public void initializeClassAbilities(){
         this.playerAbility1.add("Fire Bolt");    //each of these add statements adds the specified text at the next index in the arraylist
         this.playerAbility1.add("Shoot up to 5 magical flame bolts at your enemy each costing 8 mana.\n"
-                + "Deals 7 Base Damage each and inflicts 2 stack of burn."
-                + "[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
+                + " Deals 7 Base Damage each and inflicts 2 stack of burn."
+                + " [Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
         this.playerAbility1.add("7");
         this.playerAbility1.add("8");        
         this.playerAbility2.add("Mage Armour");
         this.playerAbility2.add("Summon a set of magical armour around yourself damaging foes that attack you.\n"
-                + "Gain 4 defense this round and deal 4 damage to enemies that hit you");
+                + " Gain 4 defense this round and deal 4 damage to enemies that hit you");
         this.playerAbility2.add("4");
         this.playerAbility2.add("10");
         this.playerAbility3.add("Lightning Storm");
         this.playerAbility3.add("Charge a lightning storm for this turn and next.\n"
-                + "Deals 15 Base Damage and inflicts 4 shock each turn."
-                + "[Shock] - take 1 extra damage for each stack.");
+                + " Deals 15 Base Damage and inflicts 4 shock each turn."
+                + " [Shock] - take 1 extra damage for each stack.");
         this.playerAbility3.add("15");
         this.playerAbility3.add("40");
     }

@@ -150,7 +150,6 @@ public class GameStart implements Runnable {
         //CREATING NEW BATTLE
         //creates new BattleStart object with the RPGPlayer object, and the RPGEnemy object
         BattleStart Battle = new BattleStart(newPlayer, newEnemy);
-        Battle.startBattleLoop(); //calls the startBattleLoop method of the battle object
     }
 
 }

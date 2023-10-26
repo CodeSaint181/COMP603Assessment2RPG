@@ -46,18 +46,18 @@ public class RPGWarriorClass extends RPGPlayerClass {
     public void initializeClassAbilities(){
         this.playerAbility1.add("Cross Slash");   //each of these add statements adds the specified text at the next index in the arraylist
         this.playerAbility1.add("Perform a heavy blow against your enemy.\n"
-                + "Deals 10*2 Base Damage.\n");
+                + " Deals 10*2 Base Damage.\n");
         this.playerAbility1.add("10");
         this.playerAbility1.add("10");        
         this.playerAbility2.add("Swift Counter");
         this.playerAbility2.add("Get into a counter stance and parry attacks for the rest of the turn.\n"
-                + "Deals damage taken this turn.");
+                + " Deals damage taken this turn.");
         this.playerAbility2.add("0");
         this.playerAbility2.add("15");
         this.playerAbility3.add("Blade Dance");
-        this.playerAbility3.add("Charge up for this turn and next,"
+        this.playerAbility3.add("Charge up for this turn and next, "
                 + "and perform a deadly flurry of attacks on the third turn.\n"
-                + "Deals 8*5 Base Damage.");
+                + " Deals 8*5 Base Damage.");
         this.playerAbility3.add("8");
         this.playerAbility3.add("20");
     }

@@ -60,4 +60,14 @@ public class RPGRelicHolyStone extends RPGRelic {
     {
         return triggerCondition;
     }
+    
+    @Override
+    public String printRelicLogEnemy(RPGEnemyClass e) {
+        return ("Invalid Target");
+    }
+
+    @Override
+    public String printRelicLogSelf() {
+        return ("Your Relic healed "+healed+" health to you!\n");
+    }
 }
