@@ -441,12 +441,22 @@ public class BattleFrame extends javax.swing.JFrame {
 
     private void DefendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefendButtonActionPerformed
         BattleLog.append(BattleManager.defend()+"\n");
+        BattleLog.append(BattleManager.playerTurnEnd()+"\n");
+        updateHealthBars();
+        if (BattleManager.enemyTurn==true)
+        {
+            enemyTurnActions();
+        }
     }//GEN-LAST:event_DefendButtonActionPerformed
 
     private void NormalAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NormalAttackActionPerformed
         BattleManager.attack();
         BattleLog.append(BattleManager.playerTurnEnd()+"\n");
         updateHealthBars();
+        if (BattleManager.enemyTurn==true)
+        {
+            enemyTurnActions();
+        }
     }//GEN-LAST:event_NormalAttackActionPerformed
 
     private void AbilitySelectorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AbilitySelectorValueChanged
@@ -456,8 +466,11 @@ public class BattleFrame extends javax.swing.JFrame {
     private void AbilityCastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbilityCastButtonActionPerformed
         BattleManager.ability(SelectedAbilityIndex);
         BattleLog.append(BattleManager.playerTurnEnd());
-        
         updateHealthBars();
+        if (BattleManager.enemyTurn==true)
+        {
+            enemyTurnActions();
+        }
     }//GEN-LAST:event_AbilityCastButtonActionPerformed
 
     private void updateHealthBars()
@@ -468,12 +481,36 @@ public class BattleFrame extends javax.swing.JFrame {
         
         PlayerManaBar.setValue(BattleManager.playerMana);
         PlayerManaText.setText(BattleManager.playerMana+" / "+RPGPlayer.playerClass.getManaPoints());
+        PlayerManaText.updateUI();
         
         PlayerHealthBar.setValue(BattleManager.playerHealth);
         PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
         PlayerHealthText.updateUI();
-        
     }
+    
+    private void playerTurnActions()
+    {
+        BattleLog.append("\n\nTurn "+BattleManager.turnCounter+"\n");
+        if (BattleManager.playerCharge==true)
+        {
+            BattleManager.playerChargeAbility();
+            updateHealthBars();
+            BattleLog.append(BattleManager.playerTurnEnd());
+        }
+    }
+    
+    private void enemyTurnActions()
+    {
+        BattleManager.enemyTurn();
+        BattleLog.append(BattleManager.enemyTurnEnd());
+        BattleLog.append(BattleManager.turnEnd());
+        updateHealthBars();
+        if (BattleManager.enemyTurn==false)
+        {
+            playerTurnActions();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

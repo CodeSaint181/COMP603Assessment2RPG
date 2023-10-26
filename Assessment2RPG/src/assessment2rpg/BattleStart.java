@@ -22,7 +22,7 @@ public class BattleStart {
     boolean forfeit = false;
     String battleChoice = "";
     int battleChoiceNum = 0;
-    boolean battleChoiceConfirm = false;
+    boolean battleActionConfirmed = false;
     int hitMax = 20;
     int hitMin = 1;
     boolean critical = false;
@@ -46,6 +46,7 @@ public class BattleStart {
 
     //all the enemy variables needed for this class
     RPGEnemy battleEnemy = null;
+    boolean enemyTurn=false;
     int enemyHealth = 100;
     boolean enemyCharge = false;
     int enemyTurnsCharged = 0;
@@ -72,12 +73,14 @@ public class BattleStart {
             {
                 combatLog = combatLog.concat("You slash at the " + RPGEnemy.enemyClass.name + " with your sword!\n");
                 targetEnemy();
+                battleActionConfirmed=true;
                 break;
             }
             case ("mage"): // if user is playing a mage
             {
                 combatLog = combatLog.concat("You fire a magic bolt at the " + RPGEnemy.enemyClass.name + "!\n");
                 targetEnemy();
+                battleActionConfirmed=true;
                 break;
             }
             case ("monk"): // if user is playing a monk
@@ -88,10 +91,12 @@ public class BattleStart {
                     targetEnemy();
                     targetEnemy();
                     targetEnemy();
+                    battleActionConfirmed=true;
                     break;
                 }
                 combatLog = combatLog.concat("You strike at the " + RPGEnemy.enemyClass.name + " with your fist!\n");
                 targetEnemy();
+                battleActionConfirmed=true;
                 break;
             }
         }
@@ -105,12 +110,14 @@ public class BattleStart {
             {
                 //sets the playerDefenseModifier to the PlayerClasses defense essentially doubling the player's defense
                 playerDefenseModifier = (RPGPlayer.playerClass.getDefense());
+                battleActionConfirmed=true;
                 return ("You brace for the enemy's attack doubling your defense for the turn");
             }
             case ("mage"): // if user is playing a mage
             {
                 //sets the playerDefenseModifier to the PlayerClass's defense essentially doubling the player's defense
                 playerDefenseModifier = (RPGPlayer.playerClass.getDefense());
+                battleActionConfirmed=true;
                 return ("You prepare a magical shield doubling your defense for the turn");
             }
 
@@ -118,6 +125,7 @@ public class BattleStart {
             {
                 //sets the playerDodgeModifier to the PlayerClass's dodge essentially doubling the player's defense
                 playerDodgeModifier = (RPGPlayer.playerClass.getDodge());
+                battleActionConfirmed=true;
                 return ("You use your inner energy to enhance your dodging ability");
             }
         }
@@ -143,7 +151,7 @@ public class BattleStart {
                             break; //break from switch case and returns to ability menu
                         } else // if player has more playermana than the manacost of the ability
                         {
-                            combatLog = combatLog.concat("You perform a Cross Slash, hitting the " + RPGEnemy.enemyClass.name + " twice!\n");
+                            combatLog = combatLog.concat("\nYou perform a Cross Slash, hitting the " + RPGEnemy.enemyClass.name + " twice!\n");
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(1).get(3)))); //reduces playermana by the manacost of the ability
                             for (int i = 1; i <= 2; i++) //for loop that will loop twice as this ability damages the opponent twice
                             {
@@ -153,7 +161,7 @@ public class BattleStart {
                                 damageEnemy(hitDamage, battleEnemy, (RPGEnemy.enemyClass.getDefense()));
                                 //calls damageEnemy method to damage battleEnemy's health by the provided hitdamage and accounting for the enemy class's defense
                             }
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break; //break from switch case and returns to main battle loop as battle choice is confirmed
                         }
                     }
@@ -167,9 +175,9 @@ public class BattleStart {
                         } else // if player has more playermana than the manacost of the ability
                         {
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(2).get(3)))); //reduces playermana by the manacost of the ability
-                            combatLog = combatLog.concat("You perform a Swift Counter, getting into a counter stance!\n");
+                            combatLog = combatLog.concat("\nYou perform a Swift Counter, getting into a counter stance!\n");
                             playerParry = true;           //sets the playerParry boolean to true
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break;   //break from switch case and returns to main battle loop as battle choice is confirmed
                         }
                     }
@@ -183,10 +191,10 @@ public class BattleStart {
                         } else // if player has more playermana than the manacost of the ability
                         {
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(3).get(3)))); //reduces playermana by the manacost of the ability
-                            combatLog = combatLog.concat("You begin to charge up your Blade Dance!\n");
+                            combatLog = combatLog.concat("\nYou begin to charge up your Blade Dance!\n");
                             playerCharge = true;  //sets playerCharge boolean to true
                             playerTurnsCharged++;       //Increments the playerTurnsCharged variable by 1
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break;      //break from switch case and returns to main battle loop as battle choice is confirmed
                         }
                     }
@@ -224,10 +232,10 @@ public class BattleStart {
                                 combatLog = combatLog.concat("Too many bolts.\n");
                             } else if ((battleChoiceNum) < 1) //if battlechoicenum is less than 1 then they cannot cast the spell
                             {
-                                combatLog = combatLog.concat("invalid number of bolts.\n");
+                                combatLog = combatLog.concat("Invalid number of bolts.\n");
                             } else //if the number of bolts is valid and they have enough mana to cast
                             {
-                                combatLog = combatLog.concat("You fire off a Fire Bolt, which splits off into " + battleChoiceNum + " fire bolts which strike " + RPGEnemy.enemyClass.name + " " + battleChoiceNum + " times!\n");
+                                combatLog = combatLog.concat("\nYou fire off a Fire Bolt, which splits off into " + battleChoiceNum + " fire bolts which strike " + RPGEnemy.enemyClass.name + " " + battleChoiceNum + " times!\n");
                                 playerMana = (playerMana - ((Integer.parseInt(RPGPlayer.playerClass.getAbility(1).get(3))) * battleChoiceNum));
                                 //reduces player's mana by the cost of the ability times the number of bolts cast
                                 for (int i = 1; i <= battleChoiceNum; i++) //for loop that will loop for the number of bolts the user entered
@@ -241,7 +249,7 @@ public class BattleStart {
                                     RPGEnemy.enemyClass.addDebuff("Flame", 2); //inflicts 2 stacks of Flame into enemy's status effects hashmap
                                     combatLog = combatLog.concat("Inflicted 2 Burn onto " + RPGEnemy.enemyClass.name + "\n");
                                 }
-                                battleChoiceConfirm = true; //confirms battle choice
+                                battleActionConfirmed = true; //confirms battle choice
                                 break; //break from switch case and returns to main battle loop as battle choice is confirmed
                             }
                             break; //break from switch case and returns to main battle loop as battle choice is confirmed
@@ -257,10 +265,10 @@ public class BattleStart {
                         } else //if user has enough mana
                         {
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(2).get(3)))); //reduce player mana by ability cost
-                            combatLog = combatLog.concat("You summon a set of magical armour, increasing your defense and damaging attacking enemies for the turn!\n");
+                            combatLog = combatLog.concat("\nYou summon a set of magical armour, increasing your defense and damaging attacking enemies for the turn!\n");
                             playerDefenseModifier = 4; //sets playerdefense modifier to 4
                             playerParry = true;      //sets playerParry Boolean to true
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break; //break from switch case and returns to main battle loop as battle choice is confirmed
                         }
                     }
@@ -274,11 +282,11 @@ public class BattleStart {
                         } else //if user has enough mana
                         {
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(3).get(3)))); //reduce playerMana by ability cost
-                            combatLog = combatLog.concat("You begin to channel a Lightning Storm to strike your enemies!\n");
+                            combatLog = combatLog.concat("\nYou begin to channel a Lightning Storm to strike your enemies!\n");
                             playerCharge = true; //sets playerCharge boolean to true
                             playerTurnsCharged++; //increments playerTurnsCharged by 1
                             playerChargeAbility();   //calls playerChargeAbility method
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break;  //break from switch case and returns to main battle loop as battle choice is confirmed
                         }
                     }
@@ -305,7 +313,7 @@ public class BattleStart {
                             directDamage = (Integer.parseInt(RPGPlayer.playerClass.getAbility(1).get(2))); //directdamage is set to the damage value of the ability
                             hitDamage = calculateDamageDirect(directDamage); //calculates the hitDamage using calculateDamageDirect method which skips the damage randomizer
                             damageEnemy(hitDamage, battleEnemy, 0); //calls damageEnemy method to damage battleEnemy's health by the provided hitdamage while ignoring the enemy's defense
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break;
                         }
                     }
@@ -328,7 +336,7 @@ public class BattleStart {
                             playerHealth = playerHealth + (Integer.parseInt(RPGPlayer.playerClass.getAbility(2).get(2)));
                             //heals player health by the "damage" value of the ability
                             combatLog = combatLog.concat("You regained " + (Integer.parseInt(RPGPlayer.playerClass.getAbility(2).get(2))) + " Health!\n");
-                            battleChoiceConfirm = true; //confirms battle choice
+                            battleActionConfirmed = true; //confirms battle choice
                             break;
                         }
                     }
@@ -344,7 +352,7 @@ public class BattleStart {
                             playerMana = (playerMana - (Integer.parseInt(RPGPlayer.playerClass.getAbility(3).get(3))));
                             combatLog = combatLog.concat("You gather your body's energy in your fists!\n");
                             playerFlurry = true;   //sets playerFlurry boolean to true
-                            battleChoiceConfirm = true;//confirms battle choice
+                            battleActionConfirmed = true;//confirms battle choice
                             break;
                         }
                     }
@@ -356,10 +364,17 @@ public class BattleStart {
 
     //method used for activating player abilities that take multiple turns to use.
     public void playerChargeAbility() {
+        battleActionConfirmed = true;
         switch (RPGPlayer.className) //switch case for which class player is using
         {
             case ("warrior"): //if user is playing warrior
             {
+                
+                if (playerTurnsCharged<3)
+                {
+                    playerTurnsCharged++;
+                    break;
+                }
                 System.out.println("\nYou perform a Blade Dance, a whirlwind of metal around you, as you rush the " + RPGEnemy.enemyClass.name + "!");
                 playerTurnsCharged = 0; //sets the playerTurnsCharged variable to 0 to reset the ability
                 int PlayerHits = 5;   //individual variable allows for easy editing of the number of hits this ability performs
@@ -395,9 +410,9 @@ public class BattleStart {
     //method for if the player decides to forfeit at the battle menu
     public void forfeit() {
         forfeit = true; //sets forfeit to true
-        battleChoiceConfirm = true;  //confirms battle choice 
-        System.out.println("You decide to forfeit the battle.");
-        System.out.println("Maybe you will win next time...");
+        battleActionConfirmed = true;  //confirms battle choice 
+        System.out.println("You decide to forfeit the battle.\n");
+        System.out.println("Maybe you will win next time...\n");
     }
 
     //method for decideing what the enemy does on it's turn
@@ -408,7 +423,7 @@ public class BattleStart {
             EnemyAbility();
         } else //otherwise if they get 20 they lose their turn
         {
-            System.out.println(RPGEnemy.enemyClass.name + " got confused and wasted it's turn.");
+            combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " got confused and wasted it's turn.\n");
         }
     }
 
@@ -417,25 +432,25 @@ public class BattleStart {
         {
             case ("Slime"): //if slime
             {
-                System.out.println("Slime tries to slam into you!");
+                combatLog = combatLog.concat("Slime tries to slam into you!\n");
                 targetPlayer(); //calls targetPlayer method that calculates the chance of hitting, the damage, and any crits before dealing damage
                 break;
             }
             case ("Skeleton"): //if skeleton
             {
-                System.out.println("Skeleton slashes at you with a sharpened bone!");
+                combatLog = combatLog.concat("Skeleton slashes at you with a sharpened bone!\n");
                 targetPlayer(); //calls targetPlayer method that calculates the chance of hitting, the damage, and any crits before dealing damage
                 break;
             }
             case ("Revenant"): //if revenant
             {
-                System.out.println("Revenant furiously claws at you with it's razor sharp broken bones!");
+                combatLog = combatLog.concat("Revenant furiously claws at you with it's razor sharp broken bones!\n");
                 targetPlayer(); //calls targetPlayer method that calculates the chance of hitting, the damage, and any crits before dealing damage
                 break;
             }
             case ("Ghost"): //if ghost
             {
-                System.out.println("Ghost swipes at you with it's cold ghostly hands!");
+                combatLog = combatLog.concat("Ghost swipes at you with it's cold ghostly hands!\n");
                 targetPlayer(); //calls targetPlayer method that calculates the chance of hitting, the damage, and any crits before dealing damage
                 break;
             }
@@ -453,19 +468,19 @@ public class BattleStart {
                 if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(3).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
                     enemyCharge = true; //sets enemyCharge boolean to true to trigger the enemy's special ability next turn
-                    System.out.println(RPGEnemy.enemyClass.name + " spends it's turn swallowing up objects.\nYou dont think your armour will help much against it's next attack!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " spends it's turn swallowing up objects.\nYou dont think your armour will help much against it's next attack!\n");
                     RPGEnemy.enemyClass.getAbility(3).set(3, "6"); //sets the ability back on 6 turns of cooldown
                     break;
                 } else if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(2).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
                     enemyDefend = true; //sets enemyDefend boolean to true
                     enemyDodgeModifier = RPGEnemy.enemyClass.getDodge(); // sets enemyDodgeModifier to the enemy's classes base dodge rate, effectively double their dodge rate
-                    System.out.println(RPGEnemy.enemyClass.name + " flattens itself out.\nIts gonnna be harder to hit it for a bit!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " flattens itself out.\nIts gonnna be harder to hit it for a bit!\n");
                     RPGEnemy.enemyClass.getAbility(2).set(3, "4"); //sets the ability back on 4 turns of cooldown
                     break;
                 } else if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
-                    System.out.println(RPGEnemy.enemyClass.name + " throws a glob of acidic slime at you.\nIt melts right through your defense!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " throws a glob of acidic slime at you.\nIt melts right through your defense!\n");
                     directDamage = (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2))); //gets damage from ability arraylist 
                     hitDamage = calculateDamageDirect(directDamage); //and calculates the damage using the method
                     damagePlayer(hitDamage, battlePlayer, 0); //calls damagePlayer method to deal damage based on hit damage and ignoring player's defence
@@ -484,7 +499,7 @@ public class BattleStart {
                         && (enemyHealth < (RPGEnemy.enemyClass.getHealthPoints() / 2)) //and thye are below half health
                         && (enemyPhaseChange != true))// and if enemy phase change is not yet true
                 {
-                    System.out.println(RPGEnemy.enemyClass.name + " gets so angry it loses it's head and vows to take you down!"
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " gets so angry it loses it's head and vows to take you down!"
                             + "\nYou dont think this is a normal skeleton anymore!");
                     RPGEnemy.enemyClass.name = "Revenant"; //changes enemy name from skeleton to Revenant
                     enemyPhaseChange = true;  //and sets enemyPhaseChange to true
@@ -495,13 +510,13 @@ public class BattleStart {
                     RPGEnemy.enemyClass.addDebuff("Vulnerable", 2); //inflicts 2 stacks of vulnerable to it's own status effect hashmap
                     if ("Revenant".equals(RPGEnemy.enemyClass.name)) //if the enemy is called Revenant, it triggeres a different description
                     {
-                        System.out.println(RPGEnemy.enemyClass.name + " taps into its sheer rage and pulls itself back together."
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " taps into its sheer rage and pulls itself back together."
                                 + "\nIt looks easier to damage right now!");
                         RPGEnemy.enemyClass.getAbility(2).set(3, "3"); //sets the ability back on 3 turns of cooldown
                         break;
                     } else //if it is not called a revenant
                     {
-                        System.out.println(RPGEnemy.enemyClass.name + " taps into its undead nature and begins to reconstruct some of it's body."
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " taps into its undead nature and begins to reconstruct some of it's body."
                                 + "\nIt looks easier to damage right now!");
                         RPGEnemy.enemyClass.getAbility(2).set(3, "4"); //sets the ability back on 4 turns of cooldown
                         break;
@@ -510,9 +525,9 @@ public class BattleStart {
                 {
                     if ("Revenant".equals(RPGEnemy.enemyClass.name)) //if enemy is revenant triggers a more powerful version of the ability
                     {
-                        System.out.println(RPGEnemy.enemyClass.name + " rips off one of its ribs and throws it at you in anger.\nIt seems to hurt itself when it does this!");
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " rips off one of its ribs and throws it at you in anger.\nIt seems to hurt itself when it does this!");
                         enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08); // deals damage to itself equal to 8% of its max health
-                        System.out.println(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08) + " Damage!");
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08) + " Damage!");
                         directDamage = (int) ((Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2))) * 1.5); //dealts 1.5 times the usual damage of the ability
 
                         hitDamage = calculateDamageDirect(directDamage);
@@ -521,9 +536,9 @@ public class BattleStart {
                         break;
                     } else //if not a revenant trigger the normal version of the ability
                     {
-                        System.out.println(RPGEnemy.enemyClass.name + " takes one of it's bones and throws it at you.\nIt seems to hurt itself when it does this!");
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " takes one of it's bones and throws it at you.\nIt seems to hurt itself when it does this!");
                         enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.1); //loses 10% of its health
-                        System.out.println(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.1) + " Damage!");
+                        combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.1) + " Damage!");
                         directDamage = (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2))); // sets directDamage to the damage value of the ability
                         hitDamage = calculateDamageDirect(directDamage);
                         damagePlayer(hitDamage, battlePlayer, RPGPlayer.playerClass.getDefense());
@@ -541,19 +556,19 @@ public class BattleStart {
                 if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(3).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
                     enemyCharge = true; //sets enemy charge to true
-                    System.out.println(RPGEnemy.enemyClass.name + " spends it's turn charging up a bolt of ghostly electricity.\nYou don't think you can get out of the way of this one!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " spends it's turn charging up a bolt of ghostly electricity.\nYou don't think you can get out of the way of this one!");
                     RPGEnemy.enemyClass.getAbility(3).set(3, "6"); //sets cooldown to 6 turns
                     break;
                 } else if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(2).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
                     enemyDefend = true; //sets enemy defend to true
                     enemyDodgeModifier = 21; //sets enemy dodge modifier to 21 giving it at least a 110% to dodge all attacks for next round
-                    System.out.println(RPGEnemy.enemyClass.name + " becomes translucent.\nAny weak attacks will go right through it.");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " becomes translucent.\nAny weak attacks will go right through it.");
                     RPGEnemy.enemyClass.getAbility(2).set(3, "4"); //sets cooldown to 4 turns
                     break;
                 } else if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
-                    System.out.println(RPGEnemy.enemyClass.name + " shoots a bolt of ghostly energy.\nIt goes straight through your defense!\nYou feel more vulnerable now.");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " shoots a bolt of ghostly energy.\nIt goes straight through your defense!\nYou feel more vulnerable now.");
                     RPGPlayer.playerClass.addDebuff("Vulnerable", 3); //gives player 3 stacks of vulnerable on their status effect HashMap
                     //this will only last 2 turns as the first stack will be lost at the end of the turn
                     directDamage = (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2)));
@@ -812,11 +827,12 @@ public class BattleStart {
     }
 
     //method to resolve and reduce status effects at the end of the turn
-    public void resolveStatusEffects() {
+    public String resolveStatusEffects() {
+        String statusLog="";
         if (RPGEnemy.enemyClass.getDebuff("Flame") > 0) //if enemy has 1 or more flame
         {
             enemyHealth = enemyHealth - (RPGEnemy.enemyClass.getDebuff("Flame")); //deal damage equal to the number of flame enemy has
-            System.out.println("\n" + RPGEnemy.enemyClass.name + " takes " + RPGEnemy.enemyClass.getDebuff("Flame") + " damage from Burn!");
+            statusLog = statusLog.concat("\n" + RPGEnemy.enemyClass.name + " takes " + RPGEnemy.enemyClass.getDebuff("Flame") + " damage from Burn!");
             RPGEnemy.enemyClass.removeDebuff("Flame", 1); //removes 1 stack of flame using the removeDebuff method from enemyClass
         }
         if (RPGEnemy.enemyClass.getDebuff("Shock") > 0) //if enemy has 1 or more shock
@@ -828,14 +844,14 @@ public class BattleStart {
             RPGEnemy.enemyClass.removeDebuff("Vulnerable", 1); //remove 1 stack of vulnerable
             if (RPGEnemy.enemyClass.getDebuff("Vulnerable") == 0) //if the enemy now has 0 stacks of vulnerable
             {
-                System.out.println(RPGEnemy.enemyClass.name + " no longer looks vulnerable!");   //prints message indicating this
+                statusLog = statusLog.concat(RPGEnemy.enemyClass.name + " no longer looks vulnerable!");   //prints message indicating this
             }
         }
 
         if (RPGPlayer.playerClass.getDebuff("Flame") > 0) //if enemy has 1 or more flame
         {
             playerHealth = playerHealth - (RPGPlayer.playerClass.getDebuff("Flame")); //deal damage equal to the number of flame player has
-            System.out.println("You take " + RPGPlayer.playerClass.getDebuff("Flame") + " damage from Burn!");
+            statusLog = statusLog.concat("You take " + RPGPlayer.playerClass.getDebuff("Flame") + " damage from Burn!");
             RPGPlayer.playerClass.removeDebuff("Flame", 1); //removes 1 stack of flame using the removeDebuff method from playerClass
         }
         if (RPGPlayer.playerClass.getDebuff("Shock") > 0) //if player has 1 or more shock
@@ -847,25 +863,36 @@ public class BattleStart {
             RPGPlayer.playerClass.removeDebuff("Vulnerable", 1);  //remove 1 stack of vulnerable
             if (RPGPlayer.playerClass.getDebuff(("Vulnerable")) == 0) //if the player now has 0 stacks of vulnerable
             {
-                System.out.println("You no longer feel vulnerable!");    //prints message indicating this
+                statusLog = statusLog.concat("You no longer feel vulnerable!");    //prints message indicating this
             }
         }
+        return statusLog;
     }
 
     public String playerTurnEnd() {
         String combatLogReturn = combatLog;
         combatLog = "";
+        if (battleActionConfirmed != true)
+        {
+            enemyTurn=false;
+            return combatLogReturn;
+        }
+        enemyTurn=true;
         return combatLogReturn;
     }
 
-    public void enemyTurnEnd() {
-
+    public String enemyTurnEnd() {
+        String combatLogReturn = combatLog;
+        combatLog = "";
+        enemyTurn=false;
+        return combatLogReturn;
     }
 
     //method for resolving all end of turn effects
     //and any things that take place between turns
-    public void turnEnd() {
-        System.out.println("Turn End:");
+    public String turnEnd() {
+        turnCounter++;
+        combatLog = combatLog.concat("\nTurn End:");
         playerDefenseModifier = 0;  // sets all stat and attack modifiers to 0
         playerDodgeModifier = 0;
         enemyDodgeModifier = 0;
@@ -898,7 +925,7 @@ public class BattleStart {
             if (playerTurnsCharged >= 3) //if player has been charging for 3 turns
             {
                 playerFlurry = false; //set playerFlurry to false
-                System.out.println("The energy in your fists subsides.");
+                combatLog = combatLog.concat("The energy in your fists subsides.");
             }
         }
         for (int i = 1; i <= 3; i++) //loops 3 times with values 1,2,and 3 to reduce cooldown of enemy abilities
@@ -926,8 +953,8 @@ public class BattleStart {
                 case ("Revenant"): //if Revenant
                 {
                     enemyHealth = enemyHealth + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.12); //restore 12% of its health
-                    System.out.println(RPGEnemy.enemyClass.name + " is pulling itself back together!");
-                    System.out.println(RPGEnemy.enemyClass.name + " regained " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.12) + " Health!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " is pulling itself back together!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " regained " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.12) + " Health!");
                     enemyTurnsCharged++; //increment enemyTurnsCharged by 1
                     if (enemyTurnsCharged >= 2) //if enemy has charged for 2 or more turns
                     {
@@ -938,8 +965,8 @@ public class BattleStart {
                 case ("Skeleton"): //if skeleton
                 {
                     enemyHealth = enemyHealth + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08); //restore 8% of its health
-                    System.out.println(RPGEnemy.enemyClass.name + " is reconstructing itself!");
-                    System.out.println(RPGEnemy.enemyClass.name + " regained " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08) + " Health!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " is reconstructing itself!");
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " regained " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08) + " Health!");
                     enemyTurnsCharged++; //increment enemyTurnsCharged by 1
                     if (enemyTurnsCharged >= 2) //if enemy has charged for 2 or more turns
                     {
@@ -958,7 +985,7 @@ public class BattleStart {
                 }
             }
         }
-        resolveStatusEffects(); //calls resolveStatusEffects method to trigger and reduce all status effects
+        combatLog = combatLog.concat(resolveStatusEffects()); //calls resolveStatusEffects method to trigger and reduce all status effects
         if ((enemyHealth <= 0) && (playerHealth > 0)) //if enemy has less than or is equal to 0 health and player has more than 0 health
         {
             victory = true; //victory boolean is set to true
@@ -966,8 +993,10 @@ public class BattleStart {
         {
             loss = true;   //loss boolean is set to true
         }
-        System.out.println("Press enter to continue to next turn");
-        userInput.nextLine();  //waits for user input to continue to next turn
+        String combatLogReturn = combatLog;
+        combatLog = "";
+        enemyTurn=false;
+        return combatLogReturn;
     }
 
 }
