@@ -111,6 +111,11 @@ public class BattleFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         PlayerName.setText("jLabel1");
 
@@ -318,6 +323,7 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Battle Window", jPanel2);
 
+        PlayerDescription2.setEditable(false);
         PlayerDescription2.setColumns(20);
         PlayerDescription2.setLineWrap(true);
         PlayerDescription2.setRows(5);
@@ -367,7 +373,7 @@ public class BattleFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Status Window", jPanel1);
@@ -480,18 +486,22 @@ public class BattleFrame extends javax.swing.JFrame {
 
         EnemyBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         EnemyBurnStatusIcon.setText("jLabel1");
+        EnemyBurnStatusIcon.setToolTipText("Burn");
         jPanel5.add(EnemyBurnStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
 
         EnemyVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         EnemyVulnerableStatusIcon.setText("jLabel1");
+        EnemyVulnerableStatusIcon.setToolTipText("Vulnerable");
         jPanel5.add(EnemyVulnerableStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, 40, 40));
 
         EnemyRevStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         EnemyRevStatusIcon.setText("jLabel1");
+        EnemyRevStatusIcon.setToolTipText("Revenant");
         jPanel5.add(EnemyRevStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 6, 40, 40));
 
         EnemyShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         EnemyShockStatusIcon.setText("jLabel1");
+        EnemyShockStatusIcon.setToolTipText("Shock");
         jPanel5.add(EnemyShockStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 6, 40, 40));
 
         EnemyBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -520,18 +530,22 @@ public class BattleFrame extends javax.swing.JFrame {
 
         PlayerBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         PlayerBurnStatusIcon.setText("jLabel1");
+        PlayerBurnStatusIcon.setToolTipText("Burn");
         jPanel7.add(PlayerBurnStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
 
         PlayerVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         PlayerVulnerableStatusIcon.setText("jLabel1");
+        PlayerVulnerableStatusIcon.setToolTipText("Vulnerable");
         jPanel7.add(PlayerVulnerableStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, 40, 40));
 
         PlayerChargingStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         PlayerChargingStatusIcon.setText("jLabel1");
+        PlayerChargingStatusIcon.setToolTipText("Charge");
         jPanel7.add(PlayerChargingStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 6, 40, 40));
 
         PlayerShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
         PlayerShockStatusIcon.setText("jLabel1");
+        PlayerShockStatusIcon.setToolTipText("Shock");
         jPanel7.add(PlayerShockStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 6, 40, 40));
 
         PlayerBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -656,6 +670,10 @@ public class BattleFrame extends javax.swing.JFrame {
         }      
     }//GEN-LAST:event_ForfeitButtonActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        updateStatus();
+    }//GEN-LAST:event_formWindowActivated
+
     private void updateStatus()
     {
         EnemyHealthBar.setValue(BattleManager.enemyHealth);
@@ -703,6 +721,13 @@ public class BattleFrame extends javax.swing.JFrame {
             EnemyVulnerableStatusIcon.setVisible(true);
             EnemyVulnerableStatusLabel.setVisible(true);
             EnemyVulnerableStatusLabel.setText(""+RPGEnemy.enemyClass.getDebuff("Vulnerable"));
+        }
+        if (BattleManager.enemyPhaseChange == true) //if the given key exists in the status effect hashmap and is not zero
+        {
+            EnemyRevStatusIcon.setVisible(true);
+            EnemyRevStatusLabel.setVisible(true);
+            EnemyRevStatusLabel.setText("???");
+            EnemySprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+".jpg")));
         }
         
         PlayerBurnStatusIcon.setVisible(false);

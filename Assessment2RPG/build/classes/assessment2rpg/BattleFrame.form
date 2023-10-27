@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -431,7 +434,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="177" max="-2" attributes="0"/>
-                      <EmptySpace pref="301" max="32767" attributes="0"/>
+                      <EmptySpace pref="307" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -446,6 +449,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="PlayerDescription2">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
@@ -717,6 +721,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Burn"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -730,6 +735,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Vulnerable"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -743,6 +749,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Revenant"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -756,6 +763,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Shock"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -835,6 +843,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Burn"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -848,6 +857,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Vulnerable"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -861,6 +871,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Charge"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -874,6 +885,7 @@
                   <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Shock"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

@@ -27,7 +27,7 @@ public class RPGRelicHolyStone extends RPGRelic {
     //Overriding method that prints relic description
     @Override
     public String printRelic() {
-        String relicString = ("Holy Stone' - Heal half the damage you deal at end of turn");
+        String relicString = ("Holy Stone - Heal half the damage you deal at end of turn");
         return relicString;
     }
 
