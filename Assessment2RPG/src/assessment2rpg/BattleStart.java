@@ -44,7 +44,6 @@ public class BattleStart {
     RPGEnemy battleEnemy = null;
     boolean enemyTurn=false;
     int enemyHealth = 100;
-    boolean enemyCharge = false;
     int enemyTurnsCharged = 0;
     int enemyDodgeModifier = 0;
     int enemyAttackModifier = 0;
@@ -457,7 +456,6 @@ public class BattleStart {
                 //otherwise they will just attack if nothing is off cooldown
                 if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(3).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
-                    enemyCharge = true; //sets enemyCharge boolean to true to trigger the enemy's special ability next turn
                     combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " spends it's turn swallowing up objects.\nYou dont think your armour will help much against it's next attack!\n");
                     RPGEnemy.enemyClass.getAbility(3).set(3, "6"); //sets the ability back on 6 turns of cooldown
                     break;
@@ -546,7 +544,6 @@ public class BattleStart {
             {
                 if (Integer.parseInt(RPGEnemy.enemyClass.getAbility(3).get(3)) <= 0) //if ability's cooldown timer is 0
                 {
-                    enemyCharge = true; //sets enemy charge to true
                     combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " spends it's turn charging up a bolt of ghostly electricity.\nYou don't think you can get out of the way of this one!");
                     RPGEnemy.enemyClass.getAbility(3).set(3, "6"); //sets cooldown to 6 turns
                     break;
@@ -589,7 +586,6 @@ public class BattleStart {
                     hitDamage = calculateDamageDirect(directDamage);
                     damagePlayer(hitDamage, battlePlayer, (int) (RPGPlayer.playerClass.getDefense() / 3)); //damages player while ignoring 2/3 of their defense
                 }
-                enemyCharge = false; //sets enemy charge to false
                 break;
             }
             case ("Ghost"): //if ghost
@@ -603,7 +599,6 @@ public class BattleStart {
                     RPGPlayer.playerClass.addDebuff("Shock", 1); //inflicts 1 stack of shock to player's status effects hashmap
                     combatLog = combatLog.concat("Inflicted 1 Shock onto " + RPGPlayer.name + "\n");
                 }
-                enemyCharge = false; //sets enemy charge to false
                 break;
             }
         }
