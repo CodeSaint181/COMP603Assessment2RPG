@@ -4,23 +4,19 @@
  */
 package assessment2rpg;
 
-import static assessment2rpg.GameStart.userInput;
 import javax.swing.JOptionPane;
 
 /**
  * ********************
- * Group 75 COMP603/52A Project 1 Sahil Dhanda 20122024
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
  *
- * @author sahil ********************
+ * @author sahil
+ *********************
  */
 //BattleStart class - the main battle loop of the game.
 public class BattleStart {
 
     //All the various miscellaneous variables needed for this class
-    boolean victory = false;
-    boolean loss = false;
-    boolean forfeit = false;
-    String battleChoice = "";
     int battleChoiceNum = 0;
     boolean battleActionConfirmed = false;
     int hitMax = 20;
@@ -935,7 +931,7 @@ public class BattleStart {
         }
         if (playerFlurry == true) //if playerFlurry is true
         {
-            playerTurnsCharged--; //increment number of playerTurnsCharged by 1
+            playerTurnsCharged--; //decrement number of playerTurnsCharged by 1
             if (playerTurnsCharged < 1) //if player has been charging for 3 turns
             {
                 playerTurnsCharged = 0;
@@ -1001,13 +997,6 @@ public class BattleStart {
             }
         }
         combatLog = combatLog.concat(resolveStatusEffects()); //calls resolveStatusEffects method to trigger and reduce all status effects
-        if ((enemyHealth <= 0) && (playerHealth > 0)) //if enemy has less than or is equal to 0 health and player has more than 0 health
-        {
-            victory = true; //victory boolean is set to true
-        } else if (playerHealth <= 0) //if player has less than or is equal to 0 health
-        {
-            loss = true;   //loss boolean is set to true
-        }
         String combatLogReturn = combatLog;
         combatLog = "";
         enemyTurn=false;

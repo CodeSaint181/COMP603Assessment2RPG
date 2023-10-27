@@ -13,8 +13,11 @@ import javax.swing.*;
 import javax.swing.UIDefaults;
 import javax.swing.Painter;
 /**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
  *
  * @author sahil
+ *********************
  */
 public class BattleFrame extends javax.swing.JFrame {
 

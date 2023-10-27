@@ -13,12 +13,13 @@ import assessment2rpg.PlayerRelics.RPGRelicFlameBlade;
 import assessment2rpg.PlayerRelics.RPGRelicHolyStone;
 import assessment2rpg.PlayerRelics.RPGRelicLightningBracer;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 // RPGPlayer class - constructs a RPGPlayer object using the provided variables
 // to switch between the different player classes and relics.

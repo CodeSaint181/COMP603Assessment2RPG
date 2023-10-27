@@ -9,12 +9,13 @@ import assessment2rpg.EnemyClasses.RPGGhostClass;
 import assessment2rpg.EnemyClasses.RPGSkeletonClass;
 import assessment2rpg.EnemyClasses.RPGSlimeClass;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 // RPGEnemy class - constructs a RPGEnemy object using the provided variable
 // to switch between the different enemy classes
