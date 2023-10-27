@@ -16,8 +16,11 @@ public class Assessment2RPGMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GameStart game = new GameStart(); //creates a new GameStart object called game
-        game.startGame();                 //calls the startGame method from the GameStart object
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TitleScreenFrame().setVisible(true);
+            }
+        });                 //calls the startGame method from the GameStart object
     }
     
 }
