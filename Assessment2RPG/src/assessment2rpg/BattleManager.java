@@ -364,8 +364,7 @@ public class BattleManager {
         {
             case ("warrior"): //if user is playing warrior
             {
-                
-                if (playerTurnsCharged<3)
+                if (playerTurnsCharged<2)
                 {
                     playerTurnsCharged++;
                     break;
@@ -380,6 +379,7 @@ public class BattleManager {
                     damageEnemy(hitDamage, battleEnemy, RPGEnemy.enemyClass.getDefense());
                     //calls damageEnemy method to damage battleEnemy's health by the provided hitdamage and accounting for the enemy class's defense
                 }
+                playerTurnsCharged = 0;
                 playerCharge = false; //sets the playerCharge boolean to false indicating the ability is finished casting
                 break; //returns to battle menu
             }
@@ -487,7 +487,7 @@ public class BattleManager {
                         && (enemyHealth < (RPGEnemy.enemyClass.getHealthPoints() / 2)) //and thye are below half health
                         && (enemyPhaseChange != true))// and if enemy phase change is not yet true
                 {
-                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " gets so angry it loses it's head and vows to take you down!"
+                    combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " gets so angry it catches on fire and vows to take you down!"
                             + "\nYou dont think this is a normal skeleton anymore!");
                     RPGEnemy.enemyClass.name = "Revenant"; //changes enemy name from skeleton to Revenant
                     enemyPhaseChange = true;  //and sets enemyPhaseChange to true
@@ -496,7 +496,7 @@ public class BattleManager {
                 {
                     enemyDefend = true; //sets enemyDefend to true
                     RPGEnemy.enemyClass.addDebuff("Vulnerable", 2); //inflicts 2 stacks of vulnerable to it's own status effect hashmap
-                    if ("Revenant".equals(RPGEnemy.enemyClass.name)) //if the enemy is called Revenant, it triggeres a different description
+                    if ("Revenant".equals(RPGEnemy.enemyClass.name)) //if the enemy is called Revenant, it triggers a different description
                     {
                         combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " taps into its sheer rage and pulls itself back together."
                                 + "\nIt looks easier to damage right now!");
@@ -514,7 +514,7 @@ public class BattleManager {
                     if ("Revenant".equals(RPGEnemy.enemyClass.name)) //if enemy is revenant triggers a more powerful version of the ability
                     {
                         combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " rips off one of its ribs and throws it at you in anger.\nIt seems to hurt itself when it does this!\n");
-                        enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08); // deals damage to itself equal to 8% of its max health
+                        enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.05); // deals damage to itself equal to 5% of its max health
                         combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08) + " Damage!");
                         directDamage = (int) ((Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2))) * 1.5); //dealts 1.5 times the usual damage of the ability
                         hitDamage = calculateDamageDirect(directDamage);
@@ -526,7 +526,7 @@ public class BattleManager {
                     } else //if not a revenant trigger the normal version of the ability
                     {
                         combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " takes one of it's bones and throws it at you.\nIt seems to hurt itself when it does this!\n");
-                        enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.1); //loses 10% of its health
+                        enemyHealth = enemyHealth - (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.08); //loses 8% of its health
                         combatLog = combatLog.concat(RPGEnemy.enemyClass.name + " took " + (int) (RPGEnemy.enemyClass.getHealthPoints() * 0.1) + " Damage!\n");
                         directDamage = (Integer.parseInt(RPGEnemy.enemyClass.getAbility(1).get(2))); // sets directDamage to the damage value of the ability
                         hitDamage = calculateDamageDirect(directDamage);

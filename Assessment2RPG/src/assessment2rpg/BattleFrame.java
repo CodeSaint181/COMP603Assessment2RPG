@@ -576,11 +576,15 @@ public class BattleFrame extends javax.swing.JFrame {
         jLayeredPane.add(jPanel7);
         jPanel7.setBounds(180, 430, 221, 66);
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/battleBGGrass.png"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel3.setMaximumSize(new java.awt.Dimension(1200, 800));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1200, 800));
         jLabel3.setOpaque(true);
+        jLabel3.setPreferredSize(new java.awt.Dimension(1200, 800));
         jLayeredPane.add(jLabel3);
-        jLabel3.setBounds(50, 70, 1140, 720);
+        jLabel3.setBounds(20, 30, 1200, 800);
         jLayeredPane.remove(jLabel3);
         jLayeredPane.add(jLabel3,20);
 
