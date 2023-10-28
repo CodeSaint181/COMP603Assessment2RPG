@@ -124,9 +124,9 @@ public class BattleFrame extends javax.swing.JFrame {
             }
         });
 
-        PlayerName.setText("jLabel1");
+        PlayerName.setText(RPGPlayer.name);
 
-        PlayerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
+        PlayerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+"Icon.png")));
         PlayerIcon.setText("jLabel2");
 
         PlayerDescription.setColumns(20);
@@ -280,15 +280,17 @@ public class BattleFrame extends javax.swing.JFrame {
                             .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PlayerName)
-                                    .addComponent(PlayerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(PlayerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
+                                        .addComponent(PlayerName)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(BattleLogHeader)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,12 +299,12 @@ public class BattleFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(PlayerName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(PlayerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BattleLogHeader)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,7 +339,7 @@ public class BattleFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(PlayerDescription2);
         PlayerDescription2.setText(RPGPlayer.printStatusWithoutSkills());
 
-        PlayerImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
+        PlayerImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+"Full.png")));
 
         PlayerName2.setText(RPGPlayer.name);
 
@@ -366,7 +368,7 @@ public class BattleFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +395,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerManaText.setText(BattleManager.playerMana+" / "+RPGPlayer.playerClass.getManaPoints());
         PlayerManaText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(PlayerManaText);
-        PlayerManaText.setBounds(180, 570, 76, 18);
+        PlayerManaText.setBounds(240, 580, 76, 18);
         jLayeredPane.remove(PlayerManaText);
         jLayeredPane.add(PlayerManaText,14);
 
@@ -404,7 +406,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerManaBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PlayerManaBar.setOpaque(true);
         jLayeredPane.add(PlayerManaBar);
-        PlayerManaBar.setBounds(50, 560, 300, 40);
+        PlayerManaBar.setBounds(110, 570, 300, 40);
         jLayeredPane.remove(PlayerManaBar);
         jLayeredPane.add(PlayerManaBar,16);
 
@@ -421,23 +423,23 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
         PlayerHealthText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(PlayerHealthText);
-        PlayerHealthText.setBounds(180, 500, 76, 18);
+        PlayerHealthText.setBounds(240, 510, 76, 18);
         jLayeredPane.remove(PlayerHealthText);
         jLayeredPane.add(PlayerHealthText,15);
 
-        PlayerSprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
+        PlayerSprite.setBackground(new java.awt.Color(102, 255, 0));
+        PlayerSprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+"Full.png")));
         PlayerSprite.setText("PlayerSprite");
-        PlayerSprite.setOpaque(true);
         jLayeredPane.add(PlayerSprite);
-        PlayerSprite.setBounds(370, 490, 150, 150);
+        PlayerSprite.setBounds(420, 370, 200, 300);
         jLayeredPane.remove(PlayerSprite);
         jLayeredPane.add(PlayerSprite,18);
 
-        EnemySprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+".jpg")));
+        EnemySprite.setBackground(new java.awt.Color(255, 0, 0));
+        EnemySprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+"Full.png")));
         EnemySprite.setText("EnemySprite");
-        EnemySprite.setOpaque(true);
         jLayeredPane.add(EnemySprite);
-        EnemySprite.setBounds(440, 230, 140, 150);
+        EnemySprite.setBounds(640, 130, 200, 300);
         jLayeredPane.remove(EnemySprite);
         jLayeredPane.add(EnemySprite,19);
 
@@ -445,7 +447,7 @@ public class BattleFrame extends javax.swing.JFrame {
         EnemyHealthText.setText(BattleManager.enemyHealth+" / "+RPGEnemy.enemyClass.getHealthPoints());
         EnemyHealthText.setBorder(new javax.swing.border.MatteBorder(null));
         jLayeredPane.add(EnemyHealthText);
-        EnemyHealthText.setBounds(730, 240, 76, 18);
+        EnemyHealthText.setBounds(980, 240, 76, 18);
         jLayeredPane.remove(EnemyHealthText);
         jLayeredPane.add(EnemyHealthText,13);
 
@@ -456,7 +458,7 @@ public class BattleFrame extends javax.swing.JFrame {
         PlayerHealthBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PlayerHealthBar.setOpaque(true);
         jLayeredPane.add(PlayerHealthBar);
-        PlayerHealthBar.setBounds(50, 490, 300, 40);
+        PlayerHealthBar.setBounds(110, 500, 300, 40);
         jLayeredPane.remove(PlayerHealthBar);
         jLayeredPane.add(PlayerHealthBar,17);
 
@@ -475,7 +477,7 @@ public class BattleFrame extends javax.swing.JFrame {
         EnemyHealthBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         EnemyHealthBar.setOpaque(true);
         jLayeredPane.add(EnemyHealthBar);
-        EnemyHealthBar.setBounds(600, 230, 300, 40);
+        EnemyHealthBar.setBounds(850, 230, 300, 40);
         //healthBar.put("ProgressBar[Enabled].foregroundPainter", new MyPainter(Color.RED));
         //healthBar.put("ProgressBar[Enabled].backgroundPainter", new MyPainter(Color.WHITE));
         EnemyHealthBar.setMaximum(RPGEnemy.enemyClass.getHealthPoints()+1);
@@ -491,94 +493,94 @@ public class BattleFrame extends javax.swing.JFrame {
         jPanel5.setOpaque(false);
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        EnemyBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        EnemyBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/BurnIcon.png"))); // NOI18N
         EnemyBurnStatusIcon.setText("jLabel1");
         EnemyBurnStatusIcon.setToolTipText("Burn");
         jPanel5.add(EnemyBurnStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
 
-        EnemyVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        EnemyVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/VulnerableIcon.png"))); // NOI18N
         EnemyVulnerableStatusIcon.setText("jLabel1");
         EnemyVulnerableStatusIcon.setToolTipText("Vulnerable");
         jPanel5.add(EnemyVulnerableStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, 40, 40));
 
-        EnemyRevStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        EnemyRevStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/RevenantIcon.png"))); // NOI18N
         EnemyRevStatusIcon.setText("jLabel1");
         EnemyRevStatusIcon.setToolTipText("Revenant");
         jPanel5.add(EnemyRevStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 6, 40, 40));
 
-        EnemyShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        EnemyShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/ShockIcon.png"))); // NOI18N
         EnemyShockStatusIcon.setText("jLabel1");
         EnemyShockStatusIcon.setToolTipText("Shock");
         jPanel5.add(EnemyShockStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 6, 40, 40));
 
-        EnemyBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EnemyBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EnemyBurnStatusLabel.setText("jLabel1");
-        jPanel5.add(EnemyBurnStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 50, 40, -1));
+        jPanel5.add(EnemyBurnStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 40, -1));
 
-        EnemyShockStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EnemyShockStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EnemyShockStatusLabel.setText("jLabel2");
-        jPanel5.add(EnemyShockStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 50, 40, -1));
+        jPanel5.add(EnemyShockStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 40, -1));
 
-        EnemyVulnerableStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EnemyVulnerableStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EnemyVulnerableStatusLabel.setText("jLabel4");
-        jPanel5.add(EnemyVulnerableStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+        jPanel5.add(EnemyVulnerableStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        EnemyRevStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EnemyRevStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EnemyRevStatusLabel.setText("jLabel5");
-        jPanel5.add(EnemyRevStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        jPanel5.add(EnemyRevStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         jLayeredPane.add(jPanel5);
-        jPanel5.setBounds(600, 280, 225, 70);
+        jPanel5.setBounds(860, 280, 211, 70);
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
         jPanel7.setForeground(new java.awt.Color(204, 0, 153));
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PlayerBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        PlayerBurnStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/BurnIcon.png"))); // NOI18N
         PlayerBurnStatusIcon.setText("jLabel1");
         PlayerBurnStatusIcon.setToolTipText("Burn");
         jPanel7.add(PlayerBurnStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
 
-        PlayerVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        PlayerVulnerableStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/VulnerableIcon.png"))); // NOI18N
         PlayerVulnerableStatusIcon.setText("jLabel1");
         PlayerVulnerableStatusIcon.setToolTipText("Vulnerable");
         jPanel7.add(PlayerVulnerableStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, 40, 40));
 
-        PlayerChargingStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        PlayerChargingStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/ChargeIcon.png"))); // NOI18N
         PlayerChargingStatusIcon.setText("jLabel1");
         PlayerChargingStatusIcon.setToolTipText("Charge");
         jPanel7.add(PlayerChargingStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 6, 40, 40));
 
-        PlayerShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        PlayerShockStatusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/ShockIcon.png"))); // NOI18N
         PlayerShockStatusIcon.setText("jLabel1");
         PlayerShockStatusIcon.setToolTipText("Shock");
         jPanel7.add(PlayerShockStatusIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 6, 40, 40));
 
-        PlayerBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PlayerBurnStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PlayerBurnStatusLabel.setText("jLabel1");
         jPanel7.add(PlayerBurnStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 50, 40, -1));
 
-        PlayerShockStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PlayerShockStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PlayerShockStatusLabel.setText("jLabel2");
         jPanel7.add(PlayerShockStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 50, 40, -1));
 
-        PlayerVulnerableStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PlayerVulnerableStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PlayerVulnerableStatusLabel.setText("jLabel4");
-        jPanel7.add(PlayerVulnerableStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
+        jPanel7.add(PlayerVulnerableStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        PlayerChargingStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PlayerChargingStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PlayerChargingStatusLabel.setText("jLabel5");
         jPanel7.add(PlayerChargingStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         jLayeredPane.add(jPanel7);
-        jPanel7.setBounds(130, 420, 221, 66);
+        jPanel7.setBounds(180, 430, 221, 66);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/battleBGGrass.png"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setOpaque(true);
         jLayeredPane.add(jLabel3);
-        jLabel3.setBounds(20, 60, 900, 720);
+        jLabel3.setBounds(50, 70, 1140, 720);
         jLayeredPane.remove(jLabel3);
         jLayeredPane.add(jLabel3,20);
 
@@ -588,9 +590,10 @@ public class BattleFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2))
+                .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -748,7 +751,7 @@ public class BattleFrame extends javax.swing.JFrame {
             EnemyRevStatusIcon.setVisible(true);
             EnemyRevStatusLabel.setVisible(true);
             EnemyRevStatusLabel.setText("???");
-            EnemySprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+".jpg")));
+            EnemySprite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+"Full.png")));
         }
         
         PlayerBurnStatusIcon.setVisible(false);

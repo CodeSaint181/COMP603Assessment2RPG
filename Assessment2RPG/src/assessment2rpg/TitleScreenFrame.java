@@ -43,6 +43,8 @@ public class TitleScreenFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(829, 419));
+        setMinimumSize(new java.awt.Dimension(829, 419));
 
         jLabel1.setBackground(new java.awt.Color(252, 221, 194));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/RPGTitle.png"))); // NOI18N

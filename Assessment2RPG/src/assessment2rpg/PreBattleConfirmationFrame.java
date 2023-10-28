@@ -140,11 +140,11 @@ public class PreBattleConfirmationFrame extends javax.swing.JFrame {
 
         playerName.setText(RPGPlayer.name);
 
-        playerImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+".jpg")));
+        playerImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGPlayer.className+"Full.png")));
 
         jLabel5.setText(RPGEnemy.enemyClass.name);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+".jpg")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/"+RPGEnemy.enemyClass.name+"Full.png")));
         jLabel6.setText("jLabel4");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);

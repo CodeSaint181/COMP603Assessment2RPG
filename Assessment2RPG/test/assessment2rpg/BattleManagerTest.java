@@ -23,7 +23,7 @@ public class BattleManagerTest {
     @BeforeClass
     public static void setUpClass() {
     }
-    RPGPlayer testPlayer = new RPGPlayer("kirm","warrior","flame blade");
+    RPGPlayer testPlayer = new RPGPlayer("kirm","warrior","lightning bracer");
     RPGEnemy testEnemy = new RPGEnemy("slime");
     
     @AfterClass

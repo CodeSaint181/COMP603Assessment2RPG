@@ -6,7 +6,6 @@
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerRelics/RPGRelicFlameBlade.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/EnemyClasses/RPGSkeletonClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/RPGEnemy.java</file>
-            <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/test/assessment2rpg/BattleStartTest.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerClasses/RPGPlayerClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/EnemyClasses/RPGEnemyClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerRelics/RPGRelic.java</file>
@@ -15,13 +14,15 @@
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/TitleScreenFrame.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerClasses/RPGMonkClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerRelics/RPGRelicLightningBracer.java</file>
-            <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/BattleStart.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerRelics/RPGRelicHolyStone.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/EnemyClasses/RPGGhostClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerClasses/RPGWarriorClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/PlayerClasses/RPGMageClass.java</file>
+            <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/BattleManager.java</file>
+            <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/test/assessment2rpg/BattleManagerTest.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/CharSelectFrame.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/EnemySelectFrame.java</file>
+            <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/Images/Ghost.jpg</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/EnemyClasses/RPGSlimeClass.java</file>
             <file>file:/F:/projects/Java%20Work/GitHub/COMP603Assessment2RPG/Assessment2RPG/src/assessment2rpg/BattleFrame.java</file>
         </group>

@@ -67,7 +67,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Creation");
 
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholderIcon.png")));
         classImage.setText("classImage");
         classImage.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -181,7 +181,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholderIcon.png")));
         relicImage.setText("jLabel5");
         relicImage.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -305,7 +305,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void WarriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WarriorActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Warrior.jpg"))); //updates class image with selected class
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/WarriorIcon.png"))); //updates class image with selected class
         classImage.setText("Warrior");
         charSelectorClass = "warrior";//sets charSelector variable to "warrior" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("Ah so you are a warrior!\n"
@@ -320,7 +320,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_WarriorActionPerformed
 
     private void MageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MageActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Mage.jpg")));  //updates class image with selected class
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/MageIcon.png")));  //updates class image with selected class
         classImage.setText("Mage");
         charSelectorClass = "mage";  //sets charSelector variable to "mage" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("Ah very impressive, you are a mage!\n"
@@ -333,7 +333,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MageActionPerformed
 
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.jpg")));  //updates class image with selected class
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/MonkIcon.png")));  //updates class image with selected class
         classImage.setText("Monk");
         charSelectorClass = "monk";  //sets charSelector variable to "monk" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("I see, you are a monk!\n"
@@ -387,7 +387,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void LightningBracerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LightningBracerActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Lightning Bracer.jpg")));  //updates relic image with selected relic
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/LightningBracerIcon.png")));  //updates relic image with selected relic
         relicImage.setText("LightningBracer");
         charSelectorRelic = "lightning bracer";   //sets charSelectorRelic variable to "lightning bracer" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Lightning Bracer - Deal 2-5 damage to enemies when they attack you with a 50% of shock.\n"
@@ -395,7 +395,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LightningBracerActionPerformed
 
     private void FlameBladeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameBladeActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Flame Blade.jpg"))); //updates relic image with selected relic
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/FlameBladeIcon.png"))); //updates relic image with selected relic
         relicImage.setText("FlameBlade");
         charSelectorRelic = "flame blade";  //sets charSelectorRelic variable to "flameBlade" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Flame Blade - Inflict 2 burn stacks on every hit. \n"
@@ -403,7 +403,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_FlameBladeActionPerformed
 
     private void HolyStoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolyStoneActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Holy Stone.jpg"))); //updates relic image with selected relic
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/HolyStoneIcon.png"))); //updates relic image with selected relic
         relicImage.setText("HolyStone");
         charSelectorRelic = "holy stone";   //sets charSelectorRelic variable to "Holy Stone" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Holy Stone - Heal half the damage you deal at end of turn.");

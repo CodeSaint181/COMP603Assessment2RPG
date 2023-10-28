@@ -250,7 +250,7 @@
         <Component class="javax.swing.JLabel" name="playerImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/&quot;+RPGPlayer.className+&quot;.jpg&quot;))" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/&quot;+RPGPlayer.className+&quot;Full.png&quot;))" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -264,7 +264,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/&quot;+RPGEnemy.enemyClass.name+&quot;.jpg&quot;))" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/&quot;+RPGEnemy.enemyClass.name+&quot;Full.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>

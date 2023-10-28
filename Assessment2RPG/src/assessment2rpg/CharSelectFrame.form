@@ -114,8 +114,8 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="classImage">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/placeholderIcon.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;classImage&quot;" type="code"/>
@@ -315,8 +315,8 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="relicImage">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/assessment2rpg/Images/placeholder.jpg"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/assessment2rpg/Images/placeholderIcon.png&quot;))" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel5"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

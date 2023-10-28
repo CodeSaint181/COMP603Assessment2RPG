@@ -55,7 +55,8 @@ public class EnemySelectFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(0, 0));
+        setMaximumSize(new java.awt.Dimension(870, 405));
+        setMinimumSize(new java.awt.Dimension(870, 405));
 
         buttonGroup1.add(Slime);
         Slime.setText("Slime");
@@ -81,7 +82,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
             }
         });
 
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholder.jpg"))); // NOI18N
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholderFull.png")));
         enemyImage.setText("jLabel2");
 
         jButton_EnemyConfirm.setText("Confirm");
@@ -154,7 +155,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Now, you must select which opponent you will face down in battle!");
@@ -192,7 +193,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -201,7 +202,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SlimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SlimeActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Slime.jpg")));  //updates to selected enemy image
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/SlimeFull.png")));  //updates to selected enemy image
         enemyImage.setText("slime");
         enemySelectorClass = "slime";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
@@ -209,7 +210,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_SlimeActionPerformed
 
     private void GhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GhostActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Ghost.jpg")));  //updates to selected enemy image
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/GhostFull.png")));  //updates to selected enemy image
         enemyImage.setText("ghost");
         enemySelectorClass = "ghost";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
@@ -217,7 +218,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_GhostActionPerformed
 
     private void SkeletonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkeletonActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Skeleton.jpg")));  //updates to selected enemy image
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/SkeletonFull.png")));  //updates to selected enemy image
         enemyImage.setText("skeleton");
         enemySelectorClass = "skeleton";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
