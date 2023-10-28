@@ -5,12 +5,13 @@
 package assessment2rpg.EnemyClasses;
 import java.util.ArrayList;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 //Abstract Class that contains all the abstract methods that will be extended
 //to fill out the EnemyClass's statistics and abilities

@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
  * @author sahil
  *********************
  */
-//BattleStart class - the main battle loop of the game.
-public class BattleStart {
+//BattleManager class - the main code of the game.
+//manages all the various functions, damage calculations, abilities and healthbars
+public class BattleManager {
 
     //All the various miscellaneous variables needed for this class
     int battleChoiceNum = 0;
@@ -50,8 +51,8 @@ public class BattleStart {
     boolean enemyPhaseChange = false;
     boolean enemyDefend = false;
 
-    //constructor to create the BattleStart object and set a few values based on the input RPGPlayer and RPGEnemy objects
-    public BattleStart(RPGPlayer newplayer, RPGEnemy newenemy) {
+    //constructor to create the BattleManager object and set a few values based on the input RPGPlayer and RPGEnemy objects
+    public BattleManager(RPGPlayer newplayer, RPGEnemy newenemy) {
         battlePlayer = newplayer;  //sets battlePlayer as input RPGPlayer object
         playerHealth = RPGPlayer.playerClass.getHealthPoints();  //sets the player's health to the health of the RPGPlayerClass using the getter
         playerMana = RPGPlayer.playerClass.getManaPoints();      //sets the player's mana to the mana of the RPGPlayerClass using the getter
@@ -129,7 +130,6 @@ public class BattleStart {
 
     //player ability class with switch cases depending on playerClass the player is using
     //and switch cases depending on which ability the player uses
-    //if player exits out of this class without selecting an ability they are sent back to battle menu
     public void ability(int index) {
         switch (RPGPlayer.className) //switch case based on the user's class name
         {
@@ -849,12 +849,13 @@ public class BattleStart {
             RPGPlayer.playerClass.removeDebuff("Vulnerable", 1);  //remove 1 stack of vulnerable
             if (RPGPlayer.playerClass.getDebuff(("Vulnerable")) == 0) //if the player now has 0 stacks of vulnerable
             {
-                statusLog = statusLog.concat("You no longer feel vulnerable!");    //prints message indicating this
+                statusLog = statusLog.concat("You no longer feel vulnerable!");
             }
         }
         return statusLog;
     }
     
+    //method to log all the status effects the player has and return the list
     public String statusCounter()
     {
         String statusText="";
@@ -874,23 +875,24 @@ public class BattleStart {
         return statusText;
     }
 
+    //returns the completed combat log for the players turn
     public String playerTurnEnd() {
-        String combatLogReturn = combatLog;
-        combatLog = "";
-        if (battleActionConfirmed != true)
+        String combatLogReturn = combatLog; //copies the constructed combat log 
+        combatLog = ""; //then clears the log for the enemy's turn
+        if (battleActionConfirmed != true)  //if player has not taken an action, like selecting an ability but not having enough mana
         {
             enemyTurn=false;
-            return combatLogReturn;
+            return combatLogReturn;  //returns combatlog
         }
         enemyTurn=true;
         return combatLogReturn;
     }
 
     public String enemyTurnEnd() {
-        String combatLogReturn = combatLog;
-        combatLog = "";
-        enemyTurn=false;
-        return combatLogReturn;
+        String combatLogReturn = combatLog; //copies the constructed combat log 
+        combatLog = "";  //then clears the log for the player's turn
+        enemyTurn=false; 
+        return combatLogReturn; //returns combatlog
     }
 
     //method for resolving all end of turn effects
@@ -992,10 +994,10 @@ public class BattleStart {
             }
         }
         combatLog = combatLog.concat(resolveStatusEffects()); //calls resolveStatusEffects method to trigger and reduce all status effects
-        String combatLogReturn = combatLog;
-        combatLog = "";
+        String combatLogReturn = combatLog; //copies the constructed combat log 
+        combatLog = "";  //then clears the log for the player's turn
         enemyTurn=false;
-        return combatLogReturn;
+        return combatLogReturn;  //returns combatlog
     }
 
 }

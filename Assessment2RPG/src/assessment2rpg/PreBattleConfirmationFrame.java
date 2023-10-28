@@ -11,6 +11,9 @@ package assessment2rpg;
  * @author sahil
  *********************
  */
+
+//PreBattleConfirmationFrame
+//User can look at their and their opponent's stats and decide if they want to change classes or enemy.
 public class PreBattleConfirmationFrame extends javax.swing.JFrame {
 
     /**
@@ -268,28 +271,28 @@ public class PreBattleConfirmationFrame extends javax.swing.JFrame {
     private void charSelectReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charSelectReturnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CharSelectFrame(createdPlayer, createdEnemy).setVisible(true);
+                new CharSelectFrame(createdPlayer, createdEnemy).setVisible(true);  //returns back to CharSelect Frame so user can change their class.
             }
         });
-        this.setVisible(false);
+        this.setVisible(false);  //makes this window invisible
     }//GEN-LAST:event_charSelectReturnActionPerformed
 
     private void EnemySelectReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnemySelectReturnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EnemySelectFrame(createdPlayer).setVisible(true);
+                new EnemySelectFrame(createdPlayer).setVisible(true);  //returns back to EnemySelect Frame so user can change their opponent.
             }
         });
-        this.setVisible(false);
+        this.setVisible(false);  //makes this window invisible
     }//GEN-LAST:event_EnemySelectReturnActionPerformed
 
     private void startBattleConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBattleConfirmActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BattleFrame(createdPlayer, createdEnemy).setVisible(true);
+                new BattleFrame(createdPlayer, createdEnemy).setVisible(true);  //Continues on to a new BattleFrame window on a new thread.
             }
         });
-        this.setVisible(false);
+        this.setVisible(false);  //makes this window invisible
     }//GEN-LAST:event_startBattleConfirmActionPerformed
 
     /**
@@ -318,13 +321,6 @@ public class PreBattleConfirmationFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PreBattleConfirmationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PreBattleConfirmationFrame(null, null).setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

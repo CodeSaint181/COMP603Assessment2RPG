@@ -7,11 +7,11 @@ package assessment2rpg.PlayerRelics;
 import assessment2rpg.EnemyClasses.RPGEnemyClass;
 
 /**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *
+ ********************/
 
 //Class extending abstract superclass RPGRelic with actual code and variables.
 public class RPGRelicLightningBracer extends RPGRelic {

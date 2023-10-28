@@ -19,6 +19,10 @@ import javax.swing.Painter;
  * @author sahil
  *********************
  */
+
+//BattleFrame
+//The main window for the game this is where most of the action takes place.
+//user fights their selected opponent in an rpg game style battle
 public class BattleFrame extends javax.swing.JFrame {
 
     /** Creates new form BattleFrame 
@@ -613,46 +617,57 @@ public class BattleFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DefendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefendButtonActionPerformed
-        BattleLog.append(BattleManager.defend()+"\n");
-        BattleLog.append(BattleManager.playerTurnEnd()+"\n");
-        updateStatus();
-        healthCheck();
-        if (BattleManager.enemyTurn==true)
+        //if user presses defend button
+        //calls the defend and playerTurnEnd function from the battleManager and
+        //appends the returned combatlogs to the battleLog textBox in this window
+        BattleLog.append(BattleManager.defend()+"\n"); 
+        BattleLog.append(BattleManager.playerTurnEnd()+"\n"); 
+        updateStatus();  //calls update status to change healthbars and status indicators
+        healthCheck();   //check if either player or enemy is dead.
+        if (BattleManager.enemyTurn==true) //if the enemytTurn flag in battlemanager is true
         {
-            enemyTurnActions();
+            enemyTurnActions(); //take enemy turn
         }
     }//GEN-LAST:event_DefendButtonActionPerformed
 
     private void NormalAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NormalAttackActionPerformed
+        //if user presses attack button
+        //calls the attack and playerTurnEnd function from the battleManager and
+        //appends the returned combatlog to the battleLog textBox in this window
         BattleManager.attack();
         BattleLog.append(BattleManager.playerTurnEnd()+"\n");
-        updateStatus();
-        healthCheck();
-        if (BattleManager.enemyTurn==true)
+        updateStatus();   //calls update status to change healthbars and status indicators
+        healthCheck();   //check if either player or enemy is dead.
+        if (BattleManager.enemyTurn==true)   //if the enemytTurn flag in battlemanager is true
         {
-            enemyTurnActions();
+            enemyTurnActions();   //take enemy turn
         }
     }//GEN-LAST:event_NormalAttackActionPerformed
 
     private void AbilitySelectorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AbilitySelectorValueChanged
-        SelectedAbilityIndex = AbilitySelector.getSelectedIndex()+1;
+        //if user selects an ability in the ability tab
+        SelectedAbilityIndex = AbilitySelector.getSelectedIndex()+1;  //set selectedAbilityIndex to the selected ability +1 cuz it starts at 0
     }//GEN-LAST:event_AbilitySelectorValueChanged
 
     private void AbilityCastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbilityCastButtonActionPerformed
+        //if user presses cast ability button
+        //calls the ability function and playerTurnEnd function from battlemanager
+        //and appends the returned combatlog to the battleLog textBox in this window 
         BattleManager.ability(SelectedAbilityIndex);
         BattleLog.append(BattleManager.playerTurnEnd());
-        updateStatus();
-        healthCheck();
-        if (BattleManager.enemyTurn==true)
+        updateStatus(); //calls update status to change healthbars and status indicators
+        healthCheck(); //check if either player or enemy is dead.
+        if (BattleManager.enemyTurn==true)   //if the enemytTurn flag in battlemanager is true
         {
-            enemyTurnActions();
+            enemyTurnActions();  //take enemy turn
         }
     }//GEN-LAST:event_AbilityCastButtonActionPerformed
 
     private void ForfeitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForfeitButtonActionPerformed
+        //if user presses Forfeit button
         Object[] options = {"Yes, Quit to menu.",
-                    "No, return to game."};
-        JFrame frame = new JFrame("Confirmation Box");
+                    "No, return to game."}; //setting text for dialog box options
+        JFrame frame = new JFrame("Confirmation Box"); //creates dialog box to confirm user wants to forfeit battle/quit game
         forfeitCheck = JOptionPane.showOptionDialog(frame,
         "Are you sure you wish to forfeit this battle?",
         "Forfeit Confirmation",
@@ -661,15 +676,14 @@ public class BattleFrame extends javax.swing.JFrame {
         null,
         options,
         options[1]);
-        if (forfeitCheck==0)
+        if (forfeitCheck==0) //if user enteded the first option "quit to menu"
         {
-            System.out.println("0 yes quit");
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new TitleScreenFrame().setVisible(true);
+                    new TitleScreenFrame().setVisible(true); //returns back to main title screen.
                 }
             });
-            this.setVisible(false);
+            this.setVisible(false); //makes this window invisible
         }      
     }//GEN-LAST:event_ForfeitButtonActionPerformed
 
@@ -679,24 +693,28 @@ public class BattleFrame extends javax.swing.JFrame {
 
     private void updateStatus()
     {
-        EnemyHealthBar.setValue(BattleManager.enemyHealth);
+        //keeps visual elements like health bars up to date with the damage.
+        EnemyHealthBar.setValue(BattleManager.enemyHealth); //sets EnemyHealthbar to enemyHealth value from battle manager
         EnemyHealthText.setText(BattleManager.enemyHealth+" / "+RPGEnemy.enemyClass.getHealthPoints());
         EnemyHealthText.updateUI();
         
-        PlayerManaBar.setValue(BattleManager.playerMana);
+        PlayerManaBar.setValue(BattleManager.playerMana); //sets playerManabar to playermana value from battle manager
         PlayerManaText.setText(BattleManager.playerMana+" / "+RPGPlayer.playerClass.getManaPoints());
         PlayerManaText.updateUI();
         
-        PlayerHealthBar.setValue(BattleManager.playerHealth);
+        PlayerHealthBar.setValue(BattleManager.playerHealth); //sets PlayerHealthbar to playerHealth value from battle manager
         PlayerHealthText.setText(BattleManager.playerHealth+" / "+RPGPlayer.playerClass.getHealthPoints());
         PlayerHealthText.updateUI();
         
-        StatusTextArea.setText(BattleManager.statusCounter());
-        statusIcons();
+        StatusTextArea.setText(BattleManager.statusCounter());  //updates the status log with all status effects on player
+        //using statusCounter function from battlemanager.
+        statusIcons();  //calls statusIcons function
     }
     
     private void statusIcons()
     {
+        //sets all status icons to be invisible initially
+        //and then makes them visible again depending on whether the player or enemy is currently inflicted with them.
         EnemyBurnStatusIcon.setVisible(false);
         EnemyShockStatusIcon.setVisible(false);
         EnemyVulnerableStatusIcon.setVisible(false);
@@ -771,15 +789,15 @@ public class BattleFrame extends javax.swing.JFrame {
     
     private void playerTurnActions()
     {
-        updateStatus();
-        if ("".equals(BattleState))
+        updateStatus(); //calls update status to change healthbars and status indicators
+        if ("".equals(BattleState)) //if battle status is still empty, check for the player and enemy's health
         {
             healthCheck();
         }
-        BattleLog.append("\n\nTurn "+BattleManager.turnCounter+":\n");
-        if (BattleManager.playerCharge==true)
+        BattleLog.append("\n\nTurn "+BattleManager.turnCounter+":\n"); //appends the current turn to the battle log
+        if (BattleManager.playerCharge==true) //if player is currently charging an attack, continue charging and skip their turn
         {
-            BattleManager.playerChargeAbility();
+            BattleManager.playerChargeAbility(); //calls playerChargeAbility Function from battleManager
             updateStatus();
             BattleLog.append(BattleManager.playerTurnEnd());
         }
@@ -787,9 +805,11 @@ public class BattleFrame extends javax.swing.JFrame {
     
     private void healthCheck()
     {
+        //checks if either the enemy or player has less than 1 health 
+        //and gives the corresponding victory or loss message and sends them back to menu
         if (BattleManager.enemyHealth<1 && BattleManager.playerHealth>=1 )
         {
-            Frame frame = new JFrame("Error Box");
+            Frame frame = new JFrame("Victory Box"); //congratulations message for winning the battle
             JOptionPane.showMessageDialog(frame, "Congrats you have won this battle,\nreturning to Main Menu.");
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -801,7 +821,7 @@ public class BattleFrame extends javax.swing.JFrame {
         }
         else if (BattleManager.playerHealth<1)
         {
-            Frame frame = new JFrame("Error Box");
+            Frame frame = new JFrame("Loss Box");   //loss message for dieing during the battle.
             JOptionPane.showMessageDialog(frame, "You have lost this battle,\nreturning to Main Menu.");
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -815,17 +835,17 @@ public class BattleFrame extends javax.swing.JFrame {
     
     private void enemyTurnActions()
     {
-        if ("".equals(BattleState))
+        if ("".equals(BattleState)) //if battleState is empty check enemy and player's health
         {
             healthCheck();
         }
-        BattleManager.enemyTurn();
-        BattleLog.append(BattleManager.enemyTurnEnd());
-        BattleLog.append(BattleManager.turnEnd());
-        updateStatus();
-        if (BattleManager.enemyTurn==false)
+        BattleManager.enemyTurn(); //calls enemy turn function from battleManager
+        BattleLog.append(BattleManager.enemyTurnEnd()); //calls enemyturnend function and append returned combat log to battle log text box
+        BattleLog.append(BattleManager.turnEnd());   //calls turnend function and append returned combat log to battle log text box
+        updateStatus(); //calls update status to change healthbars and status indicators
+        if (BattleManager.enemyTurn==false) //if enemyturn flag is false
         {
-            playerTurnActions();
+            playerTurnActions(); //start player turn.
         }
     }
     
@@ -854,16 +874,6 @@ public class BattleFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BattleFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
-        //</editor-fold>
-        RPGPlayer createdPlayer = new RPGPlayer("kirm","mage","flame blade");
-        RPGEnemy createdEnemy = new RPGEnemy("slime");
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               new BattleFrame(createdPlayer, createdEnemy).setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -926,7 +936,7 @@ public class BattleFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public RPGPlayer createdPlayer = null;
     public RPGEnemy createdEnemy = null;
-    public BattleStart BattleManager = new BattleStart(createdPlayer, createdEnemy);
+    public BattleManager BattleManager = new BattleManager(createdPlayer, createdEnemy);
     public int SelectedAbilityIndex;
     public int forfeitCheck=0;
     public String BattleState="";

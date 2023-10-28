@@ -11,6 +11,10 @@ package assessment2rpg;
  * @author sahil
  *********************
  */
+
+//Main Title Screen Frame
+//Introduces the user to the game
+//Then asks if they want to Start the game or Quit.
 public class TitleScreenFrame extends javax.swing.JFrame {
 
     /**
@@ -132,17 +136,18 @@ public class TitleScreenFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
-        System.exit(0);
+        //if player presses quit button
+        System.exit(0);   //closes this program and all child windows.
     }//GEN-LAST:event_quitButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-
+        //if player presses start button
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CharSelectFrame(null, null).setVisible(true);
+                new CharSelectFrame(null, null).setVisible(true); //Opens a window of the Character Select Frame on a new thread.
             }
         });
-        this.setVisible(false);
+        this.setVisible(false);   //sets this window to be invisible.
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**

@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
  * @author sahil
  *********************
  */
+//enemySelector Frame
+//the user selects the enemy they want to fight here.
 public class EnemySelectFrame extends javax.swing.JFrame {
 
     /**
@@ -199,44 +201,45 @@ public class EnemySelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SlimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SlimeActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Slime.jpg")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Slime.jpg")));  //updates to selected enemy image
         enemyImage.setText("slime");
-        enemySelectorClass = "slime";
+        enemySelectorClass = "slime";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
         jTextArea_EnemyDescription.setText("'Slime' - A very agile monster, it can flatten it's body to evade attacks and can suck up objects\nto throw at opponents. It has the ability to\nthrow acidic slime to melt through your armour.\n");
     }//GEN-LAST:event_SlimeActionPerformed
 
     private void GhostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GhostActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Ghost.jpg")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Ghost.jpg")));  //updates to selected enemy image
         enemyImage.setText("ghost");
-        enemySelectorClass = "ghost";
+        enemySelectorClass = "ghost";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
         jTextArea_EnemyDescription.setText("'Ghost' - A spectral monster, it can occasionally phase though attacks. It's spiritual powers give\nit the ability to fire bolts of ghostly energies\nthat pierce your soul. Be careful of it's\nghost lightning.\n\nWait, since when could ghosts throw lightning?.\n");
     }//GEN-LAST:event_GhostActionPerformed
 
     private void SkeletonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkeletonActionPerformed
-        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Skeleton.jpg")));
+        enemyImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Skeleton.jpg")));  //updates to selected enemy image
         enemyImage.setText("skeleton");
-        enemySelectorClass = "skeleton";
+        enemySelectorClass = "skeleton";  //sets enemySelectorClass for use in creating RPGEnemy Object
         jTextArea_EnemyDescription.setFont(f);
         jTextArea_EnemyDescription.setText("'Skeleton' - A skeletal warrior, it wears armour\nand has a high health. It can throw it's own\nbones like a boomerang but it seems to hurt\nitself. It can channel the necromantic energy\npowering it to heal itself.\n\nThis skeleton seems strangely angry... be ready for a tough fight!\n");
     }//GEN-LAST:event_SkeletonActionPerformed
 
     private void jButton_EnemyConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EnemyConfirmActionPerformed
-        if (!"".equals(enemySelectorClass))
+        //if user presses confirmation button
+        if (!"".equals(enemySelectorClass))  //if enemyselectorClass is not empty
             {
-                newEnemy = new RPGEnemy(enemySelectorClass);
+                newEnemy = new RPGEnemy(enemySelectorClass);  //create a new RPGEnemy Object with selected type
                 System.out.println("Created new enemy with Class "+ enemySelectorClass);
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        new PreBattleConfirmationFrame(createdPlayer, newEnemy).setVisible(true);
+                        new PreBattleConfirmationFrame(createdPlayer, newEnemy).setVisible(true); //create a new PreBattleConfirmation window on a new thread
                     }
                 });
-                this.setVisible(false);
+                this.setVisible(false); //make this window invisible
             }
-            else
+        else //if enemyselectorClass is empty
             {
-                JFrame frame = new JFrame("Error Box");
+                JFrame frame = new JFrame("Error Box");  //create an error box and inform user.
                 JOptionPane.showMessageDialog(frame, "Select a Enemy to fight.");
             }
     }//GEN-LAST:event_jButton_EnemyConfirmActionPerformed
@@ -268,12 +271,6 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EnemySelectFrame(null).setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

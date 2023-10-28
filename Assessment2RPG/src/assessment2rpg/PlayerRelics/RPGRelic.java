@@ -6,12 +6,13 @@ package assessment2rpg.PlayerRelics;
 
 import assessment2rpg.EnemyClasses.RPGEnemyClass;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 //Abstract Class that contains all the abstract methods that will be extended
 //to fill out the Relic's statistics and abilities

@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 //Class extending abstract superclass RPGEnemyClass with actual code and variables.
 public class RPGGhostClass extends RPGEnemyClass {

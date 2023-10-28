@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 
-/**********************
- * Group 75 COMP603/52A
- * Project 1
- * Sahil Dhanda 20122024
+/**
+ * ********************
+ * Group 75 COMP603/52A Project 2 Sahil Dhanda 20122024
+ *
  * @author sahil
- **********************/
+ *********************
+ */
 
 //Class extending abstract superclass RPGPlayerClass with actual code and variables.
 public class RPGWarriorClass extends RPGPlayerClass {

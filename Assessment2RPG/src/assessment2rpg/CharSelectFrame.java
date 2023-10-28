@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
  * @author sahil
  *********************
  */
+
+//Character Selection Frame
+//User enters their name, selects their class and their relic for this game.
 public class CharSelectFrame extends javax.swing.JFrame {
 
     /**
@@ -141,17 +144,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         );
 
         jLabel1.setText("Welcome to the Character Selector Please enter your name!");
-
-        playerName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playerNameActionPerformed(evt);
-            }
-        });
-        playerName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                playerNameKeyTyped(evt);
-            }
-        });
 
         nameLabel.setText("Name:");
 
@@ -313,9 +305,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void WarriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WarriorActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Warrior.jpg")));
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Warrior.jpg"))); //updates class image with selected class
         classImage.setText("Warrior");
-        charSelectorClass = "warrior";
+        charSelectorClass = "warrior";//sets charSelector variable to "warrior" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("Ah so you are a warrior!\n"
                             + "You rely on your strong attacks and high defence to reduce damage.\n"
                             + "You can use your skills to counter attack and deliver a large number of blows\n"
@@ -328,9 +320,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_WarriorActionPerformed
 
     private void MageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MageActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Mage.jpg")));
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Mage.jpg")));  //updates class image with selected class
         classImage.setText("Mage");
-        charSelectorClass = "mage";
+        charSelectorClass = "mage";  //sets charSelector variable to "mage" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("Ah very impressive, you are a mage!\n"
                             + "You use your high mana to cast elemental spells and inflict debuffs.\n"
                             + "You can cast your Mage Armour to reduce damage.\n"
@@ -341,9 +333,9 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MageActionPerformed
 
     private void MonkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonkActionPerformed
-        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.jpg")));
+        classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Monk.jpg")));  //updates class image with selected class
         classImage.setText("Monk");
-        charSelectorClass = "monk";
+        charSelectorClass = "monk";  //sets charSelector variable to "monk" for use in constructing RPGPlayer Object
         jTextArea_ClassDescription.setText("I see, you are a monk!\n"
                             + "You use your high agility to dodge attacks instead of block.\n"
                             + "You can use your skills to heal yourself and attack multiple times a turn.\n"
@@ -354,75 +346,68 @@ public class CharSelectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MonkActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-        if (!"".equals(playerName.getText()))
+        //if player presses confirmation button
+        if (!"".equals(playerName.getText())) //if playerName is not empty
         {
-            if (!"".equals(charSelectorClass) && !"".equals(charSelectorRelic))
+            if (!"".equals(charSelectorClass) && !"".equals(charSelectorRelic))  //if charSelectorClass And CharSelectorRelic are not empty
             {
-                newPlayer = new RPGPlayer(playerName.getText(), charSelectorClass, charSelectorRelic);
+                newPlayer = new RPGPlayer(playerName.getText(), charSelectorClass, charSelectorRelic); //creates a new RPGPlayer Object with the selected class and relic
                 System.out.println("Created new player with Name: "+playerName.getText()+" Class "+ charSelectorClass+" relic: "+charSelectorRelic);
-                if (createdEnemy == null)
+                if (createdEnemy == null) //if the player has not created an enemy object goes to EnemySelectionFrame
                 {
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            new EnemySelectFrame(newPlayer).setVisible(true);
+                            new EnemySelectFrame(newPlayer).setVisible(true); //Creates a new EnemySelectFrame window on a different thread
                         }
                     });
-                    this.setVisible(false);
+                    this.setVisible(false);  //makes this window invisible.
                 }
-                else 
+                else //if user already has created an enemy Object goes straight to the PreBattleConfirmationFrame window
                 {
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            new PreBattleConfirmationFrame(newPlayer, createdEnemy).setVisible(true);
+                            new PreBattleConfirmationFrame(newPlayer, createdEnemy).setVisible(true); //Creates a new PreBattleConfirmationFrame window on a different thread
                         }
                     });
-                    this.setVisible(false);
+                    this.setVisible(false); //makes this window invisible.
                 }
                 
             }
-            else
+            else //If either charSelectorClass or charSelectorRelic are empty
             {
-                JFrame frame = new JFrame("Error Box");
+                JFrame frame = new JFrame("Error Box"); //create an error box and notify the user
                 JOptionPane.showMessageDialog(frame, "Select a Class and Relic.");
             }
         }
-        else
+        else  //if player name is empty
         {
-            JFrame frame = new JFrame("Error Box");
+            JFrame frame = new JFrame("Error Box");  //create an error box and notify the user
             JOptionPane.showMessageDialog(frame, "Enter a valid player name.");
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
 
-    private void playerNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_playerNameKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_playerNameKeyTyped
-
     private void LightningBracerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LightningBracerActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Lightning Bracer.jpg")));
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Lightning Bracer.jpg")));  //updates relic image with selected relic
         relicImage.setText("LightningBracer");
-        charSelectorRelic = "lightning bracer";
+        charSelectorRelic = "lightning bracer";   //sets charSelectorRelic variable to "lightning bracer" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Lightning Bracer - Deal 2-5 damage to enemies when they attack you with a 50% of shock.\n"
                         + "[Shock] - take 1 extra damage for each stack and reduce stack by 1 at end of turn.");
     }//GEN-LAST:event_LightningBracerActionPerformed
 
     private void FlameBladeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FlameBladeActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Flame Blade.jpg")));
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Flame Blade.jpg"))); //updates relic image with selected relic
         relicImage.setText("FlameBlade");
-        charSelectorRelic = "flame blade";
+        charSelectorRelic = "flame blade";  //sets charSelectorRelic variable to "flameBlade" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Flame Blade - Inflict 2 burn stacks on every hit. \n"
                         + "[Burn] - Deal 1 damage per stack and reduce stack by 1 at end of turn.");
     }//GEN-LAST:event_FlameBladeActionPerformed
 
     private void HolyStoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolyStoneActionPerformed
-        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Holy Stone.jpg")));
+        relicImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/Holy Stone.jpg"))); //updates relic image with selected relic
         relicImage.setText("HolyStone");
-        charSelectorRelic = "holy stone";
+        charSelectorRelic = "holy stone";   //sets charSelectorRelic variable to "Holy Stone" for use in constructing RPGPlayer Object
         jTextArea_RelicDescription.setText("Holy Stone - Heal half the damage you deal at end of turn.");
     }//GEN-LAST:event_HolyStoneActionPerformed
-
-    private void playerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_playerNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,13 +436,6 @@ public class CharSelectFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CharSelectFrame(null, null).setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
