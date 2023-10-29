@@ -54,6 +54,7 @@ public class EnemySelectFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("COMP603 RPG 2");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(870, 405));
         setMinimumSize(new java.awt.Dimension(870, 405));

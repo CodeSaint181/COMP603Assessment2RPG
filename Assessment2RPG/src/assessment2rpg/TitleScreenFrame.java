@@ -43,6 +43,7 @@ public class TitleScreenFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("COMP603 RPG 2");
         setMaximumSize(new java.awt.Dimension(829, 419));
         setMinimumSize(new java.awt.Dimension(829, 419));
 

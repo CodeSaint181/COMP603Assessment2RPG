@@ -64,6 +64,7 @@ public class PreBattleConfirmationFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("COMP603 RPG 2");
 
         jLabel1.setText("Alright before we send you into battle lets just go over your details");
 

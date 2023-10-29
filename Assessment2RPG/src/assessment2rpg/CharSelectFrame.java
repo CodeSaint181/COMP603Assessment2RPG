@@ -65,7 +65,7 @@ public class CharSelectFrame extends javax.swing.JFrame {
         confirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Character Creation");
+        setTitle("COMP603 RPG 2");
 
         classImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assessment2rpg/Images/placeholderIcon.png")));
         classImage.setText("classImage");
